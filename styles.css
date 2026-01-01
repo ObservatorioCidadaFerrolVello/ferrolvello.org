@@ -320,3 +320,7 @@ h1 {
 .footer {
   margin-top: 4.5rem;
 }
+.menu a.active {
+  color: var(--text);
+  background: rgba(255,255,255,.08);
+}
