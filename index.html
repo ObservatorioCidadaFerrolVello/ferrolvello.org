@@ -3,104 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <title>Observatorio Cidadá Ferrol Vello</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Observatorio cidadán independente para a análise e mellora da convivencia, a habitabilidade e a vida urbana nos barrios de Ferrol.">
-
   <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-  <!-- CABECEIRA -->
-  <header class="topbar">
-    <div class="nav">
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <img src="assets/logo-ferrolvello.png" alt="Observatorio Cidadá Ferrol Vello">
+    </a>
 
-      <a class="brand" href="index.html">
-        <img class="logo" src="assets/logo.svg" alt="Observatorio Cidadá Ferrol Vello">
-        <span>Observatorio Cidadá Ferrol Vello</span>
-      </a>
+    <nav class="menu">
+      <a href="index.html">Inicio</a>
+      <a href="quen-somos.html">Quen somos</a>
+      <a href="que-facemos.html">Que facemos</a>
+      <a href="documentos.html">Documentos</a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </div>
+</header>
 
-      <nav class="menu" aria-label="Navegación principal">
-        <a href="index.html">Inicio</a>
-        <a href="quen-somos.html">Quen somos</a>
-        <a href="que-facemos.html">Que facemos</a>
-        <a href="documentos.html">Documentos</a>
-        <a href="contacto.html">Contacto</a>
-      </nav>
+<main class="container">
+
+  <section class="hero">
+    <div class="hero-grid">
+
+      <div class="card hero-main">
+        <div class="kicker">CIDADE · BARRIO · CONVIVENCIA</div>
+
+        <h1>Observatorio Cidadá Ferrol Vello</h1>
+
+        <p class="lead">
+          Espazo cidadán independente para a observación, análise e mellora da convivencia,
+          a habitabilidade e a vida urbana nos barrios de Ferrol.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn btn-primary" href="quen-somos.html">Coñece o Observatorio</a>
+          <a class="btn btn-outline" href="documentos.html">Ver documentos</a>
+        </div>
+      </div>
+
+      <aside class="card hero-side">
+        <h2>Liñas de actuación</h2>
+        <ul>
+          <li>Observación cidadá e análise urbana</li>
+          <li>Convivencia veciñal</li>
+          <li>Dereito á cidade e ao barrio</li>
+        </ul>
+      </aside>
 
     </div>
-  </header>
+  </section>
 
-  <!-- CONTIDO -->
-  <main class="container">
+  <section class="section">
+    <h2>Áreas de traballo</h2>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-grid">
+    <div class="grid">
+      <article class="card">
+        <h3>Habitabilidade</h3>
+        <p>Vivenda, ruído, limpeza, mobilidade, accesibilidade e espazo público.</p>
+      </article>
 
-        <div class="card">
-          <div class="kicker">Cidade · Barrio · Convivencia</div>
+      <article class="card">
+        <h3>Convivencia</h3>
+        <p>Relación veciñal, coidados comunitarios, mediación e prevención de conflitos.</p>
+      </article>
 
-          <h1>Observatorio Cidadá Ferrol Vello</h1>
+      <article class="card">
+        <h3>Transparencia</h3>
+        <p>Seguimento e análise de políticas públicas locais con evidencias e documentación.</p>
+      </article>
+    </div>
+  </section>
 
-          <p class="lead">
-            Espazo cidadán independente para a observación, análise e mellora da convivencia,
-            a habitabilidade e a vida urbana nos barrios de Ferrol.
-          </p>
+</main>
 
-          <div class="cta-row">
-            <a class="btn btn-primary" href="quen-somos.html">Coñece o Observatorio</a>
-            <a class="btn" href="documentos.html">Ver documentos</a>
-          </div>
-        </div>
-
-        <aside class="card hero-side">
-          <h2>Liñas de actuación</h2>
-          <ul class="side-list">
-            <li>Observación cidadá e análise urbana</li>
-            <li>Convivencia veciñal</li>
-            <li>Dereito á cidade e ao barrio</li>
-          </ul>
-        </aside>
-
-      </div>
-    </section>
-
-    <!-- ÁREAS -->
-    <section class="section">
-      <h2>Áreas de traballo</h2>
-
-      <div class="grid">
-        <article class="tile">
-          <h3>Habitabilidade</h3>
-          <p>
-            Vivenda, ruído, limpeza, mobilidade, accesibilidade e espazo público.
-          </p>
-        </article>
-
-        <article class="tile">
-          <h3>Convivencia</h3>
-          <p>
-            Relación veciñal, coidados comunitarios, mediación e prevención de conflitos.
-          </p>
-        </article>
-
-        <article class="tile">
-          <h3>Transparencia</h3>
-          <p>
-            Seguimento e análise de políticas públicas locais con evidencias e documentación.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <footer class="footer">
-      © 2026 · Observatorio Cidadá Ferrol Vello
-    </footer>
-
-  </main>
+<footer class="footer">
+  © 2026 · Observatorio Cidadá Ferrol Vello
+</footer>
 
 </body>
 </html>
-<a href="index.html" class="active">Inicio</a>
