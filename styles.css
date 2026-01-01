@@ -259,3 +259,64 @@ h1 {
     font-size: 2.1rem;
   }
 }
+/* ===== AJUSTES FINOS "EXQUISITO" ===== */
+
+/* Botones: que parezcan botones (y se vean premium) */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  cursor: pointer;
+  transition: transform .08s ease, filter .15s ease, background .15s ease, opacity .15s ease;
+  background: rgba(255,255,255,.05);
+}
+
+.btn:hover { text-decoration: none; filter: brightness(1.08); }
+.btn:active { transform: translateY(1px); }
+
+/* Botón secundario: contorno elegante */
+.btn:not(.btn-primary) {
+  border: 1px solid rgba(255,255,255,.18);
+}
+
+/* Botón principal: brillo controlado y más “presencia” */
+.btn-primary {
+  box-shadow: 0 12px 30px rgba(124,92,255,.25);
+}
+
+/* Menú: más “institucional premium” */
+.menu a {
+  padding: .45rem .65rem;
+  border-radius: 999px;
+  transition: background .15s ease, color .15s ease;
+}
+.menu a:hover {
+  background: rgba(255,255,255,.06);
+  text-decoration: none;
+}
+
+/* Sección: convertir “Áreas” en bloque más editorial */
+.section {
+  padding-top: 2.5rem;
+}
+
+/* Tarjetas de Áreas: más profundidad + mejor lectura */
+.tile {
+  background: linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.045));
+}
+.tile h3 {
+  margin-bottom: .4rem;
+}
+.tile p {
+  margin-top: .2rem;
+  line-height: 1.65;
+}
+
+/* Ajuste de separación general para respirar */
+.hero {
+  padding-top: 3rem;
+}
+.footer {
+  margin-top: 4.5rem;
+}
