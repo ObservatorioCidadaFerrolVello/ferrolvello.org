@@ -1,0 +1,21 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none"
+     xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c5cff"/>
+      <stop offset="100%" stop-color="#5cc8ff"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#g)"/>
+
+  <!-- Símbolo abstracto: observación + territorio -->
+  <circle cx="32" cy="26" r="6" fill="rgba(255,255,255,0.9)"/>
+  <path d="M20 42c4-6 20-6 24 0"
+        stroke="rgba(255,255,255,0.9)"
+        stroke-width="3"
+        stroke-linecap="round"
+        fill="none"/>
+
+</svg>
