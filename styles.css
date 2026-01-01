@@ -169,3 +169,38 @@ h1{
   margin-top: 26px;
   font-size:.92rem;
 }
+/* === CONTENEDOR PRINCIPAL === */
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* === TARJETAS / BLOQUES DE CONTENIDO === */
+.card,
+.section,
+.tile {
+  background: var(--card);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+/* === SECCIÓN PRINCIPAL === */
+.section {
+  padding: 2.5rem;
+  margin-top: 3rem;
+}
+
+/* === HERO AJUSTE === */
+.hero {
+  padding-top: 2.5rem;
+}
+
+/* === TEXTO === */
+h1, h2, h3 {
+  color: var(--text);
+}
+
+p, li {
+  color: var(--muted);
+}
