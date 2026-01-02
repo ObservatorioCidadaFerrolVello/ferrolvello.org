@@ -153,3 +153,16 @@ h1{
   h1{font-size:2.1rem}
   .menu{display:none}
 }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #eaf0ff;
+}
+
+.brand-logo {
+  height: 40px;      /* SVG permite subir sin perder calidad */
+  width: auto;
+  display: block;
+}
