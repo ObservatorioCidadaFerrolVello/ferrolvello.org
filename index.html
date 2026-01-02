@@ -1,130 +1,275 @@
 <!DOCTYPE html>
-<html lang="gl">
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Observatorio Cidadá Ferrol Vello</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description"
-        content="Observatorio cidadán independente para a observación, análise e mellora da convivencia, a habitabilidade e a vida urbana nos barrios de Ferrol.">
-
-  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Observatorio ciudadano por la habitabilidad, convivencia y mejora del barrio de Ferrol Vello.">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#0f172a" />
 </head>
 
 <body>
+  <!-- Barra de accesibilidad / saltos -->
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-<!-- =========================
-     CABECEIRA
-========================= -->
-<header class="topbar">
-  <div class="container nav">
+  <!-- Encabezado y navegación -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#inicio" aria-label="Inicio">
+        <!-- Si tienes assets/logo.svg, se mostrará la imagen -->
+        <img class="brand-logo" src="assets/logo.svg" alt="Logo Observatorio Cidadá Ferrol Vello" width="48" height="48" onerror="this.style.display='none';document.getElementById('logo-fallback').style.display='inline-block';" />
+        <!-- Fallback SVG embebido para garantizar que el logo se vea -->
+        <span id="logo-fallback" class="brand-fallback" aria-hidden="true" title="Observatorio Cidadá Ferrol Vello" style="display:none">
+          <svg viewBox="0 0 64 64" role="img" aria-label="OCFV">
+            <circle cx="32" cy="32" r="30" />
+            <path d="M10,32 C18,20 26,14 32,14 C38,14 46,20 54,32 C46,44 38,50 32,50 C26,50 18,44 10,32 ZM32,24 a8,8 0 1 1 0,16 a8,8 0 0 1 0-16z"/>
+          </svg>
+        </span>
+        <span class="brand-text">Observatorio Cidadá <span class="nowrap">Ferrol Vello</span></span>
+      </a>
 
-    <a class="brand" href="index.html">
-      <img src="assets/isotipo.svg"
-           alt=""
-           class="brand-mark"
-           aria-hidden="true">
-      <span class="brand-text">Observatorio Cidadá Ferrol Vello</span>
-    </a>
+      <button class="nav-toggle" aria-controls="nav" aria-expanded="false">
+        <span class="sr-only">Abrir menú</span>
+        ☰
+      </button>
 
-    <nav class="menu" aria-label="Navegación principal">
-      <a href="index.html" class="active">Inicio</a>
-      <a href="quen-somos.html">Quen somos</a>
-      <a href="que-facemos.html">Que facemos</a>
-      <a href="documentos.html">Documentos</a>
-      <a href="contacto.html">Contacto</a>
-    </nav>
+      <nav id="nav" class="site-nav" aria-label="Principal">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#mision">Misión</a></li>
+          <li><a href="#proyectos">Proyectos</a></li>
+          <li><a href="#noticias">Noticias</a></li>
+          <li><a href="#documentos">Documentos</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a class="btn primary" href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-  </div>
-</header>
+  <!-- Hero -->
+  <section id="inicio" class="hero">
+    <div class="container hero-inner">
+      <h1>Observatorio Cidadá Ferrol Vello</h1>
+      <p class="lead">
+        Participación, datos y propuestas para una mejor habitabilidad, movilidad y convivencia en Ferrol Vello.
+      </p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#mision">Conoce la misión</a>
+        <a class="btn ghost" href="#proyectos">Ver proyectos</a>
+      </div>
+    </div>
+  </section>
 
-<!-- =========================
-     CONTIDO PRINCIPAL
-========================= -->
-<main class="container">
+  <main id="contenido">
+    <!-- Misión -->
+    <section id="mision" class="section">
+      <div class="container">
+        <header class="section-head">
+          <h2>Misión</h2>
+          <p>
+            Impulsar un observatorio ciudadano que combine evidencias, escucha vecinal y colaboración institucional
+            para activar mejoras urbanas, ambientales y sociales en el barrio.
+          </p>
+        </header>
 
-  <!-- HERO -->
-  <section class="hero">
-
-    <div class="hero-grid">
-
-      <div class="card hero-main">
-
-        <div class="kicker">CIDADE · BARRIO · CONVIVENCIA</div>
-
-        <h1>Observatorio Cidadá Ferrol Vello</h1>
-
-        <p class="lead">
-          Espazo cidadán independente para a observación, análise e mellora da
-          convivencia, a habitabilidade e a vida urbana nos barrios de Ferrol.
-        </p>
-
-        <div class="cta-row">
-          <a href="quen-somos.html" class="btn btn-primary">
-            Coñece o Observatorio
-          </a>
-          <a href="documentos.html" class="btn">
-            Ver documentos
-          </a>
+        <div class="cards three">
+          <article class="card">
+            <h3>Datos abiertos</h3>
+            <p>Recopilamos y visualizamos indicadores de habitabilidad, movilidad, limpieza, ruido y comercio local.</p>
+          </article>
+          <article class="card">
+            <h3>Incidencias y propuestas</h3>
+            <p>Canalizamos incidencias y priorizamos propuestas con trazabilidad y transparencia.</p>
+          </article>
+          <article class="card">
+            <h3>Alianzas</h3>
+            <p>Colaboramos con vecinos, entidades y administración para acelerar resultados sostenibles.</p>
+          </article>
         </div>
+      </div>
+    </section>
 
+    <!-- Proyectos -->
+    <section id="proyectos" class="section alt">
+      <div class="container">
+        <header class="section-head">
+          <h2>Proyectos en curso</h2>
+          <p>Iniciativas activas y próximas acciones.</p>
+        </header>
+
+        <div class="cards three">
+          <article class="card">
+            <div class="badge">Activo</div>
+            <h3>Mapa de limpieza y residuos</h3>
+            <p>Cartografía colaborativa de puntos críticos, frecuencia de limpieza y papeleras.</p>
+            <a class="link" href="#" aria-disabled="true">Abrir tablero (próximamente)</a>
+          </article>
+          <article class="card">
+            <div class="badge">Diseño</div>
+            <h3>Rutas seguras a pie</h3>
+            <p>Identificación de itinerarios accesibles y cruces a mejorar para peatones.</p>
+            <a class="link" href="#" aria-disabled="true">Ver borrador</a>
+          </article>
+          <article class="card">
+            <div class="badge">Planificación</div>
+            <h3>Vida de barrio</h3>
+            <p>Agenda de actividades, comercio de proximidad y espacios de convivencia.</p>
+            <a class="link" href="#" aria-disabled="true">Sumarte al proyecto</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Noticias -->
+    <section id="noticias" class="section">
+      <div class="container">
+        <header class="section-head">
+          <h2>Noticias</h2>
+          <p>Actualizaciones breves del Observatorio.</p>
+        </header>
+
+        <div class="timeline">
+          <article class="t-item">
+            <time datetime="2026-01-02">2 ene 2026</time>
+            <h3>Publicación del sitio web (versión inicial)</h3>
+            <p>Lanzamos la estructura base y abrimos contribuciones de contenido.</p>
+          </article>
+          <article class="t-item">
+            <time datetime="2025-12-31">31 dic 2025</time>
+            <h3>Acta fundacional lista</h3>
+            <p>Marco organizativo aprobado para registro y puesta en marcha.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Documentos -->
+    <section id="documentos" class="section alt">
+      <div class="container">
+        <header class="section-head">
+          <h2>Documentos</h2>
+          <p>Estatutos, acta fundacional y políticas básicas.</p>
+        </header>
+
+        <ul class="doc-list">
+          <li>
+            <a class="doc" href="docs/estatutos.pdf">
+              <span class="doc-ico" aria-hidden="true">📄</span>
+              Estatutos (PDF)
+            </a>
+          </li>
+          <li>
+            <a class="doc" href="docs/acta-fundacional.pdf">
+              <span class="doc-ico" aria-hidden="true">📄</span>
+              Acta Fundacional (PDF)
+            </a>
+          </li>
+          <li>
+            <a class="doc" href="docs/aviso-legal.pdf">
+              <span class="doc-ico" aria-hidden="true">📄</span>
+              Aviso Legal + Privacidad (PDF)
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Galería -->
+    <section id="galeria" class="section">
+      <div class="container">
+        <header class="section-head">
+          <h2>Galería</h2>
+          <p>Imágenes del barrio y de nuestras actividades.</p>
+        </header>
+
+        <div class="gallery">
+          <figure class="g-item">
+            <img src="assets/galeria-1.jpg" alt="Vista del barrio" loading="lazy" />
+            <figcaption>Vista del barrio</figcaption>
+          </figure>
+          <figure class="g-item">
+            <img src="assets/galeria-2.jpg" alt="Espacio público" loading="lazy" />
+            <figcaption>Espacio público</figcaption>
+          </figure>
+          <figure class="g-item">
+            <img src="assets/galeria-3.jpg" alt="Actividad vecinal" loading="lazy" />
+            <figcaption>Actividad vecinal</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="section alt">
+      <div class="container">
+        <header class="section-head">
+          <h2>Contacto</h2>
+          <p>Escríbenos para sumar propuestas o colaborar.</p>
+        </header>
+
+        <form class="contact-form" action="https://formspree.io/f/your-id" method="POST">
+          <div class="grid">
+            <label class="field">
+              <span>Nombre</span>
+              <input type="text" name="nombre" required />
+            </label>
+            <label class="field">
+              <span>Email</span>
+              <input type="email" name="email" required />
+            </label>
+          </div>
+          <label class="field">
+            <span>Asunto</span>
+            <input type="text" name="asunto" />
+          </label>
+          <label class="field">
+            <span>Mensaje</span>
+            <textarea name="mensaje" rows="6" required></textarea>
+          </label>
+          <button class="btn primary" type="submit">Enviar</button>
+          <p class="form-note">Al enviar, aceptas nuestra <a href="docs/privacidad.pdf">Política de Privacidad</a>.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img class="brand-logo small" src="assets/logo.svg" alt="" aria-hidden="true" width="36" height="36"
+             onerror="this.style.display='none';" />
+        <strong>Observatorio Cidadá Ferrol Vello</strong>
       </div>
 
-      <aside class="card hero-side">
-        <h2 class="side-title">Liñas de actuación</h2>
-        <ul class="side-list">
-          <li>Observación cidadá e análise urbana</li>
-          <li>Convivencia veciñal</li>
-          <li>Dereito á cidade e ao barrio</li>
-        </ul>
-      </aside>
+      <ul class="footer-links">
+        <li><a href="mailto:contacto@ferrolvello.org">contacto@ferrolvello.org</a></li>
+        <li><a href="#documentos">Documentos</a></li>
+        <li><a href="#noticias">Noticias</a></li>
+      </ul>
 
+      <small class="copy">
+        © <span id="year"></span> Observatorio Cidadá Ferrol Vello. Algunos derechos reservados.
+      </small>
     </div>
+  </footer>
 
-  </section>
+  <!-- Script mínimo para menú y año -->
+  <script>
+    // Año dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-  <!-- ÁREAS -->
-  <section class="section">
-
-    <h2>Áreas de traballo</h2>
-
-    <div class="grid">
-
-      <article class="tile">
-        <h3>Habitabilidade</h3>
-        <p>
-          Vivenda, ruído, limpeza, mobilidade, accesibilidade e espazo público.
-        </p>
-      </article>
-
-      <article class="tile">
-        <h3>Convivencia</h3>
-        <p>
-          Relación veciñal, coidados comunitarios, mediación e prevención de conflitos.
-        </p>
-      </article>
-
-      <article class="tile">
-        <h3>Transparencia</h3>
-        <p>
-          Seguimento e análise de políticas públicas locais con evidencias e documentación.
-        </p>
-      </article>
-
-    </div>
-
-  </section>
-
-</main>
-
-<!-- =========================
-     PÉ DE PÁXINA
-========================= -->
-<footer class="footer">
-  <div class="container footer-inner">
-    <span>© 2026 · Observatorio Cidadá Ferrol Vello</span>
-  </div>
-</footer>
-
+    // Menú móvil
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('nav');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      nav.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>
