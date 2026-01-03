@@ -641,4 +641,26 @@ button[disabled]{
   .hero-left{ padding: 18px; }
   .hero-right{ padding: 16px; }
 }
+/* ===== TALLY EMBED FIX (SI SOLO VES EL BOTÓN, ES ALTURA/CLIP) ===== */
+.tally-wrap{
+  width: 100%;
+  overflow: visible !important;
+}
 
+.tally-iframe{
+  width: 100% !important;
+  display: block;
+  border: 0;
+  background: transparent;
+  min-height: 920px;   /* seguridad: aunque no cargue auto-height */
+  height: 920px;       /* idem */
+  border-radius: 18px;
+}
+
+/* En escritorio, dale más alto */
+@media (min-width: 980px){
+  .tally-iframe{
+    min-height: 980px;
+    height: 980px;
+  }
+}
