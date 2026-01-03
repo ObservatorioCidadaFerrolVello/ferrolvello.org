@@ -1,89 +1,171 @@
-<!DOCTYPE html>
-<html lang="gl">
-<head>
-  <meta charset="UTF-8">
-  <title>Observatorio Cidadá Ferrol Vello</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Observatorio cidadán independente para a análise e mellora da convivencia, a habitabilidade e a vida urbana nos barrios de Ferrol.">
-  <link rel="stylesheet" href="styles.css">
-</head>
+:root{
+  --bg1:#070A12;
+  --bg2:#0B1024;
+  --card: rgba(255,255,255,.06);
+  --card2: rgba(255,255,255,.09);
+  --line: rgba(255,255,255,.14);
+  --text:#EAF0FF;
+  --muted: rgba(234,240,255,.72);
+  --accent:#7C5CFF;
+  --accent2:#2FE7D0;
+  --shadow: 0 18px 60px rgba(0,0,0,.55);
+  --radius: 18px;
+  --max: 1100px;
+}
 
-<body>
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(1200px 600px at 20% 10%, rgba(124,92,255,.30), transparent 60%),
+    radial-gradient(900px 520px at 80% 20%, rgba(47,231,208,.20), transparent 55%),
+    radial-gradient(900px 520px at 70% 90%, rgba(124,92,255,.16), transparent 55%),
+    linear-gradient(180deg, var(--bg1), var(--bg2));
+}
 
-  <header class="topbar">
-    <div class="container">
-      <div class="nav">
-        <a class="brand" href="index.html">
-          <span class="brand-badge" aria-hidden="true"></span>
-          <span>Observatorio Cidadá Ferrol Vello</span>
-        </a>
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  opacity:.25;
+}
 
-        <nav class="menu" aria-label="Navegación principal">
-          <a href="index.html">Inicio</a>
-          <a href="quen-somos.html">Quen somos</a>
-          <a href="que-facemos.html">Que facemos</a>
-          <a href="documentos.html">Documentos</a>
-          <a href="contacto.html">Contacto</a>
-        </nav>
-      </div>
-    </div>
-  </header>
+a{ color:inherit; text-decoration:none; }
+a:hover{ text-decoration:underline; }
 
-  <main class="container">
+.container{
+  width:min(var(--max), calc(100% - 40px));
+  margin:0 auto;
+}
 
-    <section class="hero">
-      <div class="hero-grid">
-        <div class="card hero-main">
-          <div class="kicker">Cidade • Barrio • Convivencia</div>
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:20;
+  backdrop-filter: blur(14px);
+  background: rgba(10,14,26,.55);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
 
-          <h1>Observatorio Cidadá Ferrol Vello</h1>
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 0;
+}
 
-          <p class="lead">
-            Espazo cidadán independente para a observación, análise e mellora da convivencia,
-            a habitabilidade e a vida urbana nos barrios de Ferrol.
-          </p>
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:800;
+  letter-spacing:.2px;
+}
 
-          <div class="cta-row">
-            <a class="btn btn-primary" href="quen-somos.html">Coñece o Observatorio</a>
-            <a class="btn" href="documentos.html">Ver documentos</a>
-          </div>
-        </div>
+.brand-badge{
+  width:34px;height:34px;
+  border-radius:12px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  box-shadow: 0 10px 30px rgba(124,92,255,.35);
+}
 
-        <aside class="card hero-side">
-          <h2 class="side-title">Liñas de actuación</h2>
-          <ul class="side-list">
-            <li>Observación cidadá e análise urbana</li>
-            <li>Convivencia veciñal</li>
-            <li>Dereito á cidade e ao barrio</li>
-          </ul>
-        </aside>
-      </div>
-    </section>
+.menu{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  align-items:center;
+}
 
-    <section class="section">
-      <h2>Áreas de traballo</h2>
-      <div class="grid">
-        <article class="tile">
-          <h3>Habitabilidade</h3>
-          <p>Vivenda, ruído, limpeza, mobilidade, accesibilidade e espazo público.</p>
-        </article>
-        <article class="tile">
-          <h3>Convivencia</h3>
-          <p>Relación veciñal, coidados, mediación e prevención de conflitos.</p>
-        </article>
-        <article class="tile">
-          <h3>Transparencia</h3>
-          <p>Seguimento e análise de políticas locais con evidencias e documentación.</p>
-        </article>
-      </div>
-    </section>
+.menu a{
+  padding:8px 10px;
+  border-radius:12px;
+  color:var(--muted);
+  font-weight:650;
+  border:1px solid transparent;
+}
+.menu a:hover{
+  text-decoration:none;
+  color:var(--text);
+  border-color: rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+}
 
-    <footer class="footer">
-      © 2026 · Observatorio Cidadá Ferrol Vello
-    </footer>
+.hero{
+  padding:54px 0 26px;
+}
 
-  </main>
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:22px;
+}
 
-</body>
-</html>
+@media (max-width: 900px){
+  .hero-grid{ grid-template-columns:1fr; }
+}
 
+.card{
+  background: linear-gradient(180deg, var(--card), rgba(255,255,255,.03));
+  border:1px solid rgba(255,255,255,.10);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.hero-main{
+  padding:28px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-main::after{
+  content:"";
+  position:absolute;
+  inset:-40px;
+  background:
+    radial-gradient(400px 220px at 20% 20%, rgba(47,231,208,.25), transparent 65%),
+    radial-gradient(520px 260px at 70% 10%, rgba(124,92,255,.28), transparent 70%);
+  filter: blur(6px);
+  opacity:.9;
+}
+
+.kicker{
+  display:inline-flex;
+  gap:10px;
+  align-items:center;
+  padding:8px 12px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+  color:var(--muted);
+  font-weight:700;
+  font-size:.92rem;
+}
+
+h1{
+  margin:14px 0 10px;
+  font-size: clamp(2rem, 3.4vw, 3.2rem);
+  line-height:1.1;
+}
+
+.lead{
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height:1.7;
+  max-width: 62ch;
+}
+
+.footer{
+  padding: 26px 0 42px;
+  color: rgba(234,240,255,.62);
+  border-top: 1px solid rgba(255,255,255,.10);
+  margin-top: 26px;
+  font-size:.92rem;
+}
