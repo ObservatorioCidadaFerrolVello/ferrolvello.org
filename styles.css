@@ -84,29 +84,32 @@ a:hover{ text-decoration: none; }
   min-width: 240px;
 }
 
+/* ===== LOGO (AUMENTADO) ===== */
 .brand-mark{
-  width: 34px;
-  height: 34px;
-  border-radius: 12px;
+  width: 52px;         /* antes 34 */
+  height: 52px;        /* antes 34 */
+  border-radius: 16px; /* antes 12 */
   background: linear-gradient(135deg, rgba(124,92,255,.65), rgba(24,209,197,.55));
-  box-shadow: 0 10px 22px rgba(0,0,0,.35);
-  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 12px 26px rgba(0,0,0,.40);
+  border: 1px solid rgba(255,255,255,.16);
   display:grid;
   place-items:center;
   overflow:hidden;
+  flex: 0 0 auto;
 }
 .brand-mark img{
   width: 100%;
   height: 100%;
   object-fit: contain;
   display:block;
-  /* se o logo ten marxe interna rara, podes probar: transform: scale(.92); */
+  padding: 6px; /* aire interno; se ves o logo “encollido”, baixa a 2px */
+  filter: drop-shadow(0 8px 18px rgba(0,0,0,.55));
 }
 
 .brand-name{
-  font-weight: 700;
+  font-weight: 750;   /* antes 700 */
   letter-spacing: .1px;
-  font-size: 14.5px;
+  font-size: 15.5px;  /* antes 14.5 */
   line-height: 1.1;
   opacity: .96;
 }
@@ -607,9 +610,18 @@ button[disabled]{
   .nav-toggle{ display:inline-block; }
 }
 
+/* Móbil: logo un pouco menor para que non coma espazo */
 @media (max-width: 520px){
-  .brand-name{ font-size: 13.5px; }
+  .brand-mark{ width: 44px; height: 44px; border-radius: 14px; }
+  .brand-mark img{ padding: 5px; }
+  .brand-name{ font-size: 14px; }
   .hero-left{ padding: 18px; }
   .hero-right{ padding: 16px; }
 }
 
+/* Escritorio grande: máis presenza institucional */
+@media (min-width: 980px){
+  .brand-mark{ width: 60px; height: 60px; border-radius: 18px; }
+  .brand-mark img{ padding: 7px; }
+  .brand-name{ font-size: 16px; }
+}
