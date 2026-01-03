@@ -19,20 +19,21 @@
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#" aria-label="Inicio — Observatorio Cidadá Ferrol Vello">
-        <!-- LOGO: coloca o teu ficheiro en /assets/logo.svg (ou cambia a extensión a .png) -->
+      <a class="brand" href="index.html" aria-label="Inicio — Observatorio Cidadá Ferrol Vello">
         <span class="brand-mark" aria-hidden="true">
-          <img src="assets/logo.svg" alt="" />
+          <!-- ✅ LOGO REAL: está en /assets/logo-ferrolvello.svg -->
+          <img src="assets/logo-ferrolvello.svg" alt="Observatorio Cidadá Ferrol Vello" />
         </span>
         <span class="brand-name">Observatorio Cidadá Ferrol Vello</span>
       </a>
 
+      <!-- ✅ MENÚ MULTI-PÁXINA (coas túas páxinas reais) -->
       <nav class="nav" aria-label="Navegación principal">
-        <a class="nav-link is-active" href="#inicio">Inicio</a>
-        <a class="nav-link" href="#quen-somos">Quen somos</a>
-        <a class="nav-link" href="#que-facemos">Que facemos</a>
-        <a class="nav-link" href="#documentos">Documentos</a>
-        <a class="nav-link" href="#contacto">Contacto</a>
+        <a class="nav-link is-active" href="index.html">Inicio</a>
+        <a class="nav-link" href="quen-somos.html">Quen somos</a>
+        <a class="nav-link" href="que-facemos.html">Que facemos</a>
+        <a class="nav-link" href="documentos.html">Documentos</a>
+        <a class="nav-link" href="contacto.html">Contacto</a>
       </nav>
 
       <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile">
@@ -43,11 +44,11 @@
     <!-- Menú móbil -->
     <div class="nav-mobile" id="nav-mobile" hidden>
       <div class="container nav-mobile-inner">
-        <a href="#inicio">Inicio</a>
-        <a href="#quen-somos">Quen somos</a>
-        <a href="#que-facemos">Que facemos</a>
-        <a href="#documentos">Documentos</a>
-        <a href="#contacto">Contacto</a>
+        <a href="index.html">Inicio</a>
+        <a href="quen-somos.html">Quen somos</a>
+        <a href="que-facemos.html">Que facemos</a>
+        <a href="documentos.html">Documentos</a>
+        <a href="contacto.html">Contacto</a>
       </div>
     </div>
   </header>
@@ -72,8 +73,9 @@
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#contacto">Coñece o Observatorio</a>
-            <a class="btn btn-ghost" href="#documentos">Ver documentos</a>
+            <!-- ✅ como xa tes contacto.html, mellor ir á páxina -->
+            <a class="btn btn-primary" href="contacto.html">Coñece o Observatorio</a>
+            <a class="btn btn-ghost" href="documentos.html">Ver documentos</a>
           </div>
 
           <div class="hero-metrics" role="list" aria-label="Principios">
@@ -110,6 +112,9 @@
         </aside>
       </div>
     </section>
+
+    <!-- Nota: como agora tes páxinas separadas, estas seccións poden quedar aquí (como resumo)
+         ou podes recortalas e deixar só teasers con botóns a cada páxina. -->
 
     <!-- QUEN SOMOS -->
     <section class="section" id="quen-somos">
@@ -219,8 +224,8 @@
                 Aquí enlazarás os PDFs e comunicados cando os teñas listos.
               </p>
             </div>
-            <a class="btn btn-ghost" href="#" aria-disabled="true" title="Engadirás a ligazón cando estea dispoñible">
-              Ver repositorio
+            <a class="btn btn-ghost" href="documentos.html">
+              Ver documentos
             </a>
           </div>
 
@@ -338,4 +343,3 @@
   </script>
 </body>
 </html>
-
