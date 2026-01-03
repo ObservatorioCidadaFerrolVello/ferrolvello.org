@@ -1,194 +1,360 @@
 <!DOCTYPE html>
-<html lang="gl">
+<html lang="gl" dir="ltr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Observatorio Cidadá Ferrol Vello</title>
-  <meta name="description" content="Observatorio cidadán para a mellora da habitabilidade, a convivencia e o dereito á cidade en Ferrol Vello.">
-  <meta name="theme-color" content="#0B0E10">
-  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Vixilancia cidadá, transparencia e mellora urbana no barrio de Ferrol Vello. Informes, denuncias veciñais, datos abertos e acción institucional." />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b0d10;           /* negro azulado sobrio */
+      --panel: #12161b;        /* panel cards */
+      --text: #e7eef7;         /* texto principal */
+      --muted: #a8b3c2;        /* texto secundario */
+      --brand: #00b3a4;        /* acento atlántico/verde auga */
+      --brand-2:#007a72;       /* acento escuro */
+      --alert: #d94c4c;        /* para chamadas combativas */
+      --ok: #3ecf8e;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #f5f7fb;
+        --panel: #ffffff;
+        --text: #0b0d10;
+        --muted: #516070;
+        --brand: #008f85;
+        --brand-2:#005b55;
+        --shadow: 0 8px 24px rgba(4, 22, 33, .08);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    /* NAV */
+    header{position:sticky;top:0;z-index:50;background:color-mix(in oklab, var(--bg) 92%, black 8%);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid color-mix(in oklab, var(--muted) 20%, transparent);}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.2px}
+    .brand svg{width:32px;height:32px}
+    .nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    .nav a{padding:10px 12px;border-radius:12px;color:var(--muted);font-weight:600}
+    .nav a:hover,.nav a[aria-current="page"]{color:var(--text);background:color-mix(in oklab, var(--brand) 16%, transparent)}
+    .actions{display:flex;align-items:center;gap:10px}
+    .lang, .cta{border:1px solid color-mix(in oklab, var(--muted) 28%, transparent);background:var(--panel);color:var(--text);padding:10px 12px;border-radius:12px}
+    .cta{background:linear-gradient(135deg,var(--brand),var(--brand-2));border:none;box-shadow:var(--shadow);font-weight:700}
+    .cta:hover{transform:translateY(-1px)}
+
+    /* HERO */
+    .hero{position:relative;overflow:hidden}
+    .hero-inner{display:grid;grid-template-columns:1.1fr 0.9fr;gap:32px;align-items:center;padding:56px 0}
+    .kicker{font-family:"Space Grotesk",Inter,system-ui,sans-serif;color:var(--brand);letter-spacing:.6px;font-weight:700}
+    h1{font-family:"Space Grotesk",Inter,system-ui,sans-serif;font-size:clamp(32px,4.6vw,56px);line-height:1.05;margin:8px 0 18px}
+    .lead{font-size:clamp(16px,1.8vw,20px);color:var(--muted);max-width:60ch}
+    .hero-card{background:var(--panel);border:1px solid color-mix(in oklab, var(--muted) 25%, transparent);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+    .metric{background:color-mix(in oklab, var(--panel) 80%, var(--brand) 6%);border-radius:14px;padding:14px;border:1px solid color-mix(in oklab, var(--muted) 20%, transparent)}
+    .metric b{font-size:22px;display:block}
+
+    /* SECTIONS */
+    section{padding:44px 0}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card{background:var(--panel);border:1px solid color-mix(in oklab, var(--muted) 25%, transparent);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+    .card h3{margin:6px 0 6px;font-size:20px}
+    .badge{display:inline-block;background:linear-gradient(135deg,var(--brand),var(--brand-2));padding:6px 10px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.3px}
+    .list{display:grid;gap:10px;margin:14px 0 0;padding:0}
+    .list li{list-style:none;display:flex;gap:10px;align-items:flex-start}
+
+    /* FOOTER */
+    footer{border-top:1px solid color-mix(in oklab, var(--muted) 25%, transparent);padding:26px 0;color:var(--muted)}
+
+    /* RESPONSIVE */
+    @media (max-width:920px){
+      .hero-inner{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      .metrics{grid-template-columns:repeat(2,1fr)}
+      .nav ul{display:none}
+    }
+  </style>
 </head>
 <body>
-  <!-- CABECEIRA -->
-  <header class="masthead">
-    <div class="container masthead__row">
-      <a class="brand" href="#inicio" aria-label="Inicio">
-        <img src="./logo-ferrolvello.svg" alt="Observatorio Cidadá Ferrol Vello" class="brand__logo">
-        <div class="brand__text">
-          <span class="brand__title">Observatorio Cidadá</span>
-          <span class="brand__sub">Ferrol Vello</span>
-        </div>
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand" aria-label="Inicio OCFV">
+        <!-- LOGO OCFV: Lupa + porto estilizado -->
+        <svg viewBox="0 0 64 64" aria-hidden="true" role="img" focusable="false">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+              <stop stop-color="var(--brand)" offset="0"/>
+              <stop stop-color="var(--brand-2)" offset="1"/>
+            </linearGradient>
+          </defs>
+          <circle cx="28" cy="28" r="18" fill="none" stroke="url(#g)" stroke-width="4"/>
+          <path d="M39 39 L56 56" stroke="url(#g)" stroke-width="6" stroke-linecap="round"/>
+          <!-- Ícono do porto simplificado -->
+          <path d="M18 33 h20 M20 29 v6 M38 29 v6" stroke="url(#g)" stroke-width="3"/>
+        </svg>
+        <span>Observatorio Cidadá Ferrol Vello</span>
       </a>
-
-      <nav class="nav" aria-label="Principal">
-        <button class="nav__toggle" aria-controls="nav-menu" aria-expanded="false">☰</button>
-        <ul id="nav-menu" class="nav__menu">
-          <li><a class="is-active" href="#inicio">Inicio</a></li>
+      <nav aria-label="Seccións principais">
+        <ul>
           <li><a href="#mision">Misión</a></li>
-          <li><a href="#areas">Áreas</a></li>
-          <li><a href="#comunicados">Comunicados</a></li>
-          <li><a href="#documentos">Documentos</a></li>
-          <li><a class="btn btn--outline" href="#contacto">Contacto</a></li>
+          <li><a href="#informes">Informes</a></li>
+          <li><a href="#denuncias">Denuncias</a></li>
+          <li><a href="#datos">Datos</a></li>
+          <li><a href="#novas">Novas</a></li>
         </ul>
       </nav>
+      <div class="actions">
+        <select class="lang" aria-label="Idioma" id="lang">
+          <option value="gl" selected>GL</option>
+          <option value="es">ES</option>
+          <option value="en">EN</option>
+        </select>
+        <a class="cta" href="#unete">Únete</a>
+      </div>
     </div>
   </header>
 
-  <!-- HERO MANIFIESTO -->
-  <section id="inicio" class="hero container">
-    <div class="hero__eyebrow">CIDADE · BARRIO · CONVIVENCIA</div>
-    <h1 class="hero__title">Ferrol Vello merece <em>evidencia, voz e resultado</em></h1>
-    <p class="hero__lead">
-      Observatorio independente para medir, documentar e impulsar melloras reais na habitabilidade,
-      mobilidade e convivencia. Datos públicos, trazabilidade e cooperación institucional.
-    </p>
-    <div class="hero__actions">
-      <a class="btn btn--primary" href="#mision">Que facemos</a>
-      <a class="btn btn--danger" href="#denuncia">Enviar denuncia</a>
-      <a class="btn btn--ghost" href="#documentos">Ver documentos</a>
-    </div>
-
-    <div class="hero__stripe">
-      <strong>Compromiso:</strong> datos abertos · transparencia radical · resultados verificables
-    </div>
-  </section>
-
   <main>
-    <!-- MISIÓN -->
-    <section id="mision" class="section container">
-      <header class="section__head">
-        <h2>Misión</h2>
-        <p class="muted">Un marco claro para a acción cívica e institucional.</p>
-      </header>
-
-      <div class="grid grid--3">
-        <article class="card">
-          <h3>Datos abertos</h3>
-          <p>Indicadores medibles (limpeza, ruído, mobilidade, vivenda) con metodoloxía pública e versións abertas.</p>
-        </article>
-        <article class="card">
-          <h3>Trazabilidade</h3>
-          <p>Rexistro único de incidencias e propostas con seguimento, prazos e responsable.</p>
-        </article>
-        <article class="card">
-          <h3>Cooperación</h3>
-          <p>Diálogo técnico con administración e entidades para executar melloras verificables.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- ÁREAS -->
-    <section id="areas" class="section section--alt container">
-      <header class="section__head">
-        <h2>Áreas de traballo</h2>
-      </header>
-
-      <div class="grid grid--3">
-        <article class="panel">
-          <div class="panel__kicker">PX-01</div>
-          <h3>Habitabilidade</h3>
-          <p>Vivenda, limpeza, ruído, espazo público e accesibilidade universal.</p>
-          <a class="link" href="#">Mapa de puntos críticos (beta)</a>
-        </article>
-
-        <article class="panel">
-          <div class="panel__kicker">PX-02</div>
-          <h3>Convivencia</h3>
-          <p>Coidados comunitarios, mediación, prevención de conflitos e vida de barrio.</p>
-          <a class="link" href="#">Protocolo de mediación</a>
-        </article>
-
-        <article class="panel">
-          <div class="panel__kicker">PX-03</div>
-          <h3>Transparencia</h3>
-          <p>Seguimento de políticas locais, orzamentos e execución con evidencias.</p>
-          <a class="link" href="#">Taboleiro de execución</a>
-        </article>
-      </div>
-    </section>
-
-    <!-- COMUNICADOS / NOVAS -->
-    <section id="comunicados" class="section container">
-      <header class="section__head">
-        <h2>Comunicados</h2>
-        <p class="muted">Notas breves, informes e alertas cidadás.</p>
-      </header>
-
-      <div class="timeline">
-        <article class="t">
-          <time datetime="2026-01-02">02·01·2026</time>
-          <h3>Publicación da versión pública</h3>
-          <p>Abrimos a estrutura base e comezamos recollida de achegas.</p>
-        </article>
-        <article class="t">
-          <time datetime="2025-12-31">31·12·2025</time>
-          <h3>Acta fundacional</h3>
-          <p>Marco organizativo aprobado para rexistro.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- DOCUMENTOS -->
-    <section id="documentos" class="section section--alt container">
-      <header class="section__head">
-        <h2>Documentos</h2>
-      </header>
-      <ul class="docs">
-        <li><a class="doc" href="docs/estatutos.pdf">📄 Estatutos (PDF)</a></li>
-        <li><a class="doc" href="docs/acta-fundacional.pdf">📄 Acta fundacional (PDF)</a></li>
-        <li><a class="doc" href="docs/privacidade.pdf">📄 Privacidade e aviso legal (PDF)</a></li>
-      </ul>
-    </section>
-
-    <!-- CONTACTO / DENUNCIA -->
-    <section id="contacto" class="section container">
-      <header class="section__head">
-        <h2>Contacto</h2>
-      </header>
-
-      <form class="form" action="https://formspree.io/f/your-id" method="POST">
-        <div class="row row--2">
-          <label>Nome
-            <input type="text" name="name" required>
-          </label>
-          <label>Correo
-            <input type="email" name="email" required>
-          </label>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <div class="kicker">Transparencia · Evidencia · Acción</div>
+          <h1>Vixilancia cidadá e defensa activa de Ferrol Vello</h1>
+          <p class="lead">Un espazo independente para documentar problemas, impulsar solucións e esixir responsabilidades. Publicamos informes técnicos, abrimos datos e coordinamos a acción veciñal e institucional.</p>
+          <div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap">
+            <a class="cta" href="#informes">Ver Informes</a>
+            <a class="lang" href="#denuncias" style="font-weight:700">Facer unha denuncia</a>
+          </div>
+          <div class="metrics">
+            <div class="metric">
+              <span class="badge">2026</span>
+              <b id="m1">12</b>
+              <small style="color:var(--muted)">informes publicados</small>
+            </div>
+            <div class="metric">
+              <span class="badge">OCFV</span>
+              <b id="m2">148</b>
+              <small style="color:var(--muted)">incidencias rexistradas</small>
+            </div>
+            <div class="metric">
+              <span class="badge">Datos</span>
+              <b id="m3">5</b>
+              <small style="color:var(--muted)">conxuntos abertos</small>
+            </div>
+          </div>
         </div>
-        <label>Asunto
-          <input type="text" name="subject">
-        </label>
-        <label>Mensaxe
-          <textarea name="message" rows="6" required></textarea>
-        </label>
-        <button class="btn btn--primary" type="submit">Enviar</button>
-      </form>
+        <aside class="hero-card" aria-label="Panel de acceso rápido">
+          <h2 style="margin:0 0 10px;font-size:22px">Acceso rápido</h2>
+          <ul class="list">
+            <li>🧭 <a href="#mision"><b>Misión e principios</b></a></li>
+            <li>📑 <a href="#informes"><b>Informes e dossiers</b></a></li>
+            <li>📣 <a href="#denuncias"><b>Rexistro de denuncias</b></a></li>
+            <li>🗂️ <a href="#datos"><b>Datos abertos</b></a></li>
+            <li>📰 <a href="#novas"><b>Novas e notas de prensa</b></a></li>
+            <li>🤝 <a href="#unete"><b>Únete / Contacto</b></a></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
 
-      <div id="denuncia" class="callout">
-        <h3>Denuncia cidadá</h3>
-        <p>Se detectas un problema no barrio (limpeza, ruído, mobilidade...), envíanos a túa evidencia (foto, localización, descrición) para rexistro con trazabilidade.</p>
-        <a class="btn btn--danger" href="#contacto">Rexistrar denuncia</a>
+    <!-- MISIÓN -->
+    <section id="mision">
+      <div class="container">
+        <div class="cards">
+          <article class="card">
+            <span class="badge">Misión</span>
+            <h3>Defender o dereito a un barrio habitábel</h3>
+            <p style="color:var(--muted)">Investigamos con rigor, propoñemos solucións e facemos seguimento público das administracións e empresas responsables.</p>
+          </article>
+          <article class="card">
+            <span class="badge">Principios</span>
+            <h3>Independencia, datos e ética pública</h3>
+            <p style="color:var(--muted)">Transparencia radical, protección de datos persoais, evidencias verificables e código aberto para reproducibilidade.</p>
+          </article>
+          <article class="card">
+            <span class="badge">Acción</span>
+            <h3>Do diagnóstico á execución</h3>
+            <p style="color:var(--muted)">Informes técnicos, denuncias formais, campañas públicas e mesas de traballo coa veciñanza.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFORMES -->
+    <section id="informes">
+      <div class="container">
+        <h2 style="font-family:Space Grotesk,Inter,sans-serif;font-size:28px;margin:0 0 12px">Informes recentes</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Inventario de edificios en risco (v.0)</h3>
+            <p style="color:var(--muted)">Metodoloxía, fotos xeorreferenciadas e priorización de actuacións.</p>
+            <div style="display:flex;gap:10px;margin-top:12px">
+              <a class="lang" href="#">PDF</a>
+              <a class="lang" href="#">HTML</a>
+              <a class="lang" href="#">Reprodutibilidade</a>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Accesibilidade e mobilidade</h3>
+            <p style="color:var(--muted)">Barreiras arquitectónicas, prazas PMR e percorridos seguros.</p>
+            <div style="display:flex;gap:10px;margin-top:12px">
+              <a class="lang" href="#">PDF</a>
+              <a class="lang" href="#">Mapa</a>
+            </div>
+          </article>
+          <article class="card">
+            <h3>Hixiene urbana e residuos</h3>
+            <p style="color:var(--muted)">Zonas críticas, frecuencia de recollida e propostas de mellora.</p>
+            <div style="display:flex;gap:10px;margin-top:12px">
+              <a class="lang" href="#">PDF</a>
+              <a class="lang" href="#">Datos</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DENUNCIAS -->
+    <section id="denuncias">
+      <div class="container">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+            <h2 style="margin:0;font-family:Space Grotesk,Inter,sans-serif">Rexistro de denuncias</h2>
+            <a class="cta" href="#form-denuncia">Nova denuncia</a>
+          </div>
+          <p style="color:var(--muted)">Sube unha incidencia con foto, ubicación e descrición. Enviamos aos organismos competentes e publicamos o seguimento.</p>
+          <div class="cards" style="grid-template-columns:1fr 1fr">
+            <div class="card" style="background:transparent;border-style:dashed">
+              <h3 style="margin-top:0">Como funciona</h3>
+              <ol style="margin:0 0 0 18px;line-height:1.6">
+                <li>Rexistro da incidencia (web ou email).</li>
+                <li>Validación e clasificación.</li>
+                <li>Remisión formal a administracións.</li>
+                <li>Seguimento público por estados.</li>
+              </ol>
+            </div>
+            <div class="card" id="form-denuncia" style="background:transparent;border-style:dashed">
+              <form onsubmit="event.preventDefault(); alert('Exemplo: aquí gardaríase a denuncia.');">
+                <label>Descrición<br><textarea required rows="4" style="width:100%;border-radius:12px;padding:10px;background:var(--panel);color:var(--text);border:1px solid color-mix(in oklab, var(--muted) 25%, transparent)"></textarea></label>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px">
+                  <label>Ubicación<br><input type="text" placeholder="Rúa, nº" style="width:100%;border-radius:12px;padding:10px;background:var(--panel);color:var(--text);border:1px solid color-mix(in oklab, var(--muted) 25%, transparent)"></label>
+                  <label>Foto<br><input type="file" accept="image/*" style="width:100%;border-radius:12px;padding:10px;background:var(--panel);color:var(--text);border:1px solid color-mix(in oklab, var(--muted) 25%, transparent)"></label>
+                </div>
+                <div style="display:flex;gap:10px;margin-top:12px">
+                  <button class="cta" type="submit">Enviar</button>
+                  <a class="lang" href="#">Ver exemplos</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DATOS -->
+    <section id="datos">
+      <div class="container">
+        <div class="cards">
+          <article class="card">
+            <span class="badge">CSV</span>
+            <h3>Catálogo de incidentes (anónimo)</h3>
+            <p style="color:var(--muted)">Descarga o CSV cos campos estándar (id, estado, categoría, coordenadas, data, etc.).</p>
+            <div style="display:flex;gap:10px;margin-top:12px">
+              <a class="lang" href="#">Descargar</a>
+              <a class="lang" href="#">Diccionario de datos</a>
+            </div>
+          </article>
+          <article class="card">
+            <span class="badge">Mapa</span>
+            <h3>Mapa de incidencias</h3>
+            <p style="color:var(--muted)">Visualización por capas: hixiene, accesibilidade, vivenda, patrimonio.</p>
+            <a class="lang" href="#">Abrir mapa</a>
+          </article>
+          <article class="card">
+            <span class="badge">API</span>
+            <h3>API estática</h3>
+            <p style="color:var(--muted)">JSON versionado en GitHub Pages para reutilización por terceiros.</p>
+            <a class="lang" href="#">Ver exemplo</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOVAS -->
+    <section id="novas">
+      <div class="container">
+        <h2 style="font-family:Space Grotesk,Inter,sans-serif;font-size:28px;margin:0 0 12px">Novas e notas de prensa</h2>
+        <div class="cards">
+          <article class="card">
+            <span class="badge">Nota</span>
+            <h3>Presentación pública do Observatorio</h3>
+            <p style="color:var(--muted)">Convocatoria aberta a colectivos e medios. Obxectivos 2026 e folla de ruta.</p>
+            <a class="lang" href="#">Ler máis</a>
+          </article>
+          <article class="card">
+            <span class="badge" style="background:linear-gradient(135deg,var(--alert),#922)">Alerta</span>
+            <h3>Caída de cornixa na Ribeira</h3>
+            <p style="color:var(--muted)">Requirimos balizamento e inspección urxente. Seguimento en curso.</p>
+            <a class="lang" href="#">Seguimento</a>
+          </article>
+          <article class="card">
+            <span class="badge">Comunicado</span>
+            <h3>Convenio de colaboración</h3>
+            <p style="color:var(--muted)">Acordo marco con entidades sociais para mellorar a recollida de incidencias.</p>
+            <a class="lang" href="#">Ver</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÚNETE / CONTACTO -->
+    <section id="unete">
+      <div class="container">
+        <div class="card">
+          <h2 style="margin-top:0;font-family:Space Grotesk,Inter,sans-serif">Únete / Contacto</h2>
+          <p style="color:var(--muted)">Se queres colaborar, achegar datos, ou coordinar accións co Observatorio, escríbenos.</p>
+          <form onsubmit="event.preventDefault(); alert('Exemplo: aquí enviaríase a mensaxe.');">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+              <label>Nome<br><input required type="text" style="width:100%;border-radius:12px;padding:10px;background:var(--panel);color:var(--text);border:1px solid color-mix(in oklab, var(--muted) 25%, transparent)"></label>
+              <label>Email<br><input required type="email" style="width:100%;border-radius:12px;padding:10px;background:var(--panel);color:var(--text);border:1px solid color-mix(in oklab, var(--muted) 25%, transparent)"></label>
+            </div>
+            <label style="display:block;margin-top:10px">Mensaxe<br><textarea required rows="4" style="width:100%;border-radius:12px;padding:10px;background:var(--panel);color:var(--text);border:1px solid color-mix(in oklab, var(--muted) 25%, transparent)"></textarea></label>
+            <div style="display:flex;gap:10px;margin-top:12px;align-items:center">
+              <button class="cta" type="submit">Enviar</button>
+              <small style="color:var(--muted)">Ou escríbenos a <b>contacto@ferrolvello.org</b></small>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer__row">
-      <small>© <span id="ano"></span> Observatorio Cidadá Ferrol Vello</small>
-      <ul class="footer__links">
-        <li><a href="#documentos">Documentos</a></li>
-        <li><a href="mailto:contacto@ferrolvello.org">contacto@ferrolvello.org</a></li>
-      </ul>
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+      <div>© <span id="year"></span> Observatorio Cidadá Ferrol Vello · <a href="#" style="text-decoration:underline">Aviso legal</a> · <a href="#" style="text-decoration:underline">Privacidade</a></div>
+      <div style="display:flex;gap:12px">
+        <a class="lang" href="#">GitHub</a>
+        <a class="lang" href="#">RSS</a>
+        <a class="lang" href="#">Boletín</a>
+      </div>
     </div>
   </footer>
 
   <script>
-    document.getElementById('ano').textContent = new Date().getFullYear();
-    const toggle = document.querySelector('.nav__toggle');
-    const menu = document.getElementById('nav-menu');
-    toggle.addEventListener('click', () => {
-      const open = menu.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open);
+    // Ano dinámico
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Selector de idioma (placeholder)
+    document.getElementById('lang').addEventListener('change', e => {
+      const v = e.target.value;
+      alert('Cambio de idioma a: ' + v + '\n(Preparado para i18n estático: /gl, /es, /en)');
     });
   </script>
 </body>
