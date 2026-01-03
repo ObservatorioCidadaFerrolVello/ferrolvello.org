@@ -1,104 +1,108 @@
 <!DOCTYPE html>
 <html lang="gl">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Contacto · Observatorio Cidadá Ferrol Vello</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Contacto co Observatorio Cidadá Ferrol Vello. Envíanos a túa mensaxe, proposta ou aviso cidadán." />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- CSS principal -->
-  <link rel="stylesheet" href="styles.css" />
+  <!-- SEO -->
+  <meta name="description" content="Formulario de contacto do Observatorio Cidadá Ferrol Vello para comunicacións cidadás, propostas e avisos veciñais.">
 
-  <!-- Script Tally (OBLIGATORIO para altura dinámica en PC) -->
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Tally embed script (OBLIGATORIO para altura dinámica) -->
   <script async src="https://tally.so/widgets/embed.js"></script>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">
-        <div class="brand-mark">
-          <img src="assets/logo-ferrolvello.svg" alt="Observatorio Cidadá Ferrol Vello">
-        </div>
-        <div class="brand-name">Observatorio Cidadá Ferrol Vello</div>
-      </a>
+<a class="skip-link" href="#main">Saltar ao contido</a>
 
-      <nav class="nav">
-        <a class="nav-link" href="index.html">Inicio</a>
-        <a class="nav-link" href="quen-somos.html">Quen somos</a>
-        <a class="nav-link" href="que-facemos.html">Que facemos</a>
-        <a class="nav-link" href="documentos.html">Documentos</a>
-        <a class="nav-link is-active" href="contacto.html">Contacto</a>
-      </nav>
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+  <div class="container header-inner">
+
+    <div class="brand">
+      <div class="brand-mark">
+        <img src="assets/logo-ferrolvello.svg" alt="Observatorio Cidadá Ferrol Vello">
+      </div>
+      <div class="brand-name">Observatorio Cidadá Ferrol Vello</div>
     </div>
-  </header>
 
-  <!-- CONTIDO -->
-  <main>
+    <nav class="nav">
+      <a href="index.html" class="nav-link">Inicio</a>
+      <a href="quen-somos.html" class="nav-link">Quen somos</a>
+      <a href="que-facemos.html" class="nav-link">Que facemos</a>
+      <a href="documentos.html" class="nav-link">Documentos</a>
+      <a href="contacto.html" class="nav-link is-active">Contacto</a>
+    </nav>
 
-    <section class="section">
-      <div class="container">
+  </div>
+</header>
 
-        <div class="card contact">
+<!-- ================= MAIN ================= -->
+<main id="main" class="container">
 
-          <div class="contact-left">
-            <h2>Contacto</h2>
-            <p class="muted">
-              Este formulario está destinado a comunicacións cidadás, propostas,
-              avisos veciñais e contacto institucional.
-            </p>
+  <section class="hero">
+    <div class="hero-grid">
 
-            <div class="callout">
-              <p class="callout-text">
-                ⚠️ Este formulario non é un servizo de emerxencias.
-                Para situacións urxentes, contacta cos servizos correspondentes.
-              </p>
-            </div>
-          </div>
+      <!-- TEXTO IZQUIERDA -->
+      <div class="hero-left card">
+        <h1 class="hero-title">Contacto</h1>
 
-          <div class="contact-form">
+        <p class="hero-lead">
+          Este formulario está destinado a comunicacións cidadás, propostas,
+          avisos veciñais e contacto institucional.
+        </p>
 
-            <!-- ===== FORMULARIO TALLY (PEGAR TAL CUAL) ===== -->
-            <iframe
-              data-tally-src="https://tally.so/embed/vGeB00?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-              loading="lazy"
-              width="100%"
-              height="200"
-              frameborder="0"
-              marginheight="0"
-              marginwidth="0"
-              title="Contacto · Observatorio Cidadá Ferrol Vello">
-            </iframe>
-            <!-- ===== FIN FORMULARIO TALLY ===== -->
+        <div class="callout">
+          <p class="callout-text">
+            ⚠️ Este formulario <strong>non é un servizo de emerxencias</strong>.
+            Para situacións urxentes, contacta cos servizos correspondentes.
+          </p>
+        </div>
+      </div>
 
-            <p class="tiny muted">
-              Ao enviar este formulario aceptas o tratamento dos datos conforme á lexislación vixente
-              en materia de protección de datos. Os datos non se empregarán con fins comerciais.
-            </p>
+      <!-- FORMULARIO DERECHA -->
+      <div class="hero-right card">
 
-          </div>
+        <!-- TALLY EMBED -->
+        <iframe
+          data-tally-src="https://tally.so/embed/vGeB00?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+          loading="lazy"
+          width="100%"
+          height="300"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          title="Contacto · Observatorio Cidadá Ferrol Vello">
+        </iframe>
 
+        <div class="callout">
+          <p class="callout-text tiny">
+            Ao enviar este formulario aceptas o tratamento dos datos conforme á
+            lexislación vixente en materia de protección de datos.
+            Os datos non se empregarán con fins comerciais.
+          </p>
         </div>
 
       </div>
-    </section>
 
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <span class="tiny muted">
-        © Observatorio Cidadá Ferrol Vello
-      </span>
-      <span class="tiny muted">
-        contacto@ferrolvello.org
-      </span>
     </div>
-  </footer>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="tiny muted">© Observatorio Cidadá Ferrol Vello</div>
+    <div class="tiny">
+      <a href="mailto:contacto@ferrolvello.org">contacto@ferrolvello.org</a>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
-
