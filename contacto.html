@@ -1,35 +1,16 @@
-<!-- Tally embed correcto con altura dinámica -->
-<iframe
-  data-tally-src="https://tally.so/embed/vGeBo0?alignLeft=1&hideTitle=1&transparentBackground=1"
-  loading="lazy"
-  width="100%"
-  height="900"
-  frameborder="0"
-  marginheight="0"
-  marginwidth="0"
-  title="Contacto · Observatorio Cidadá Ferrol Vello"
-  style="border:0; border-radius:18px; background:transparent;">
-</iframe>
+<!-- FORMULARIO TALLY (EMBED REAL) -->
+<div class="tally-wrap">
+  <iframe
+    class="tally-iframe"
+    data-tally-src="https://tally.so/embed/vGeBo0?hideTitle=1&transparentBackground=1&alignLeft=1"
+    loading="lazy"
+    title="Formulario de contacto"
+    frameborder="0"
+    marginheight="0"
+    marginwidth="0">
+  </iframe>
+</div>
 
-<script>
-  var d = document,
-      w = "https://tally.so/widgets/embed.js",
-      v = function () {
-        if (typeof Tally !== "undefined") {
-          Tally.loadEmbeds();
-        } else {
-          d.querySelectorAll("iframe[data-tally-src]").forEach(function (e) {
-            e.src = e.dataset.tallySrc;
-          });
-        }
-      };
-  if (typeof Tally !== "undefined") {
-    v();
-  } else if (d.querySelector('script[src="' + w + '"]') == null) {
-    var s = d.createElement("script");
-    s.src = w;
-    s.onload = v;
-    s.onerror = v;
-    d.body.appendChild(s);
-  }
-</script>
+<!-- Script oficial de Tally para auto-height -->
+<script async src="https://tally.so/widgets/embed.js"></script>
+
