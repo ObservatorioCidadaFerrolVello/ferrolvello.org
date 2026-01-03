@@ -627,3 +627,47 @@ button[disabled]{
   .brand-mark img{ transform: scale(1.32); }
   .brand-name{ font-size: 16px; }
 }
+/* ===== LOGO EN PLACA (RECTANGULAR) ===== */
+.brand-mark{
+  width: 92px;          /* ancho */
+  height: 56px;         /* alto */
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(124,92,255,.65), rgba(24,209,197,.55));
+  box-shadow: 0 12px 26px rgba(0,0,0,.40);
+  border: 1px solid rgba(255,255,255,.16);
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  flex: 0 0 auto;
+}
+
+.brand-mark img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display:block;
+  padding: 0;
+  transform: scale(1.10); /* al ser rectangular, suele requerir menos zoom */
+  transform-origin: center;
+  filter: drop-shadow(0 10px 20px rgba(0,0,0,.55));
+}
+
+/* Móbil */
+@media (max-width: 520px){
+  .brand-mark{
+    width: 76px;
+    height: 46px;
+    border-radius: 14px;
+  }
+  .brand-mark img{ transform: scale(1.06); }
+}
+
+/* Escritorio grande */
+@media (min-width: 980px){
+  .brand-mark{
+    width: 108px;
+    height: 64px;
+    border-radius: 18px;
+  }
+  .brand-mark img{ transform: scale(1.14); }
+}
