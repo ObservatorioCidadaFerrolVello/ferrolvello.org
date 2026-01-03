@@ -1,141 +1,104 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="gl">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Contacto — Observatorio Cidadá Ferrol Vello." />
+  <meta charset="UTF-8" />
   <title>Contacto · Observatorio Cidadá Ferrol Vello</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Contacto co Observatorio Cidadá Ferrol Vello. Envíanos a túa mensaxe, proposta ou aviso cidadán." />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="styles.css" />
 
-  <link rel="stylesheet" href="styles.css?v=5" />
-  <meta name="theme-color" content="#0b1020" />
+  <!-- Script Tally (OBLIGATORIO para altura dinámica en PC) -->
+  <script async src="https://tally.so/widgets/embed.js"></script>
 </head>
 
 <body>
-  <a class="skip-link" href="#contido">Saltar ao contido</a>
 
+  <!-- HEADER -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Inicio — Observatorio Cidadá Ferrol Vello">
-        <span class="brand-mark" aria-hidden="true">
-          <img src="assets/logo-ferrolvello.svg" alt="Observatorio Cidadá Ferrol Vello" />
-        </span>
-        <span class="brand-name">Observatorio Cidadá Ferrol Vello</span>
+      <a class="brand" href="index.html">
+        <div class="brand-mark">
+          <img src="assets/logo-ferrolvello.svg" alt="Observatorio Cidadá Ferrol Vello">
+        </div>
+        <div class="brand-name">Observatorio Cidadá Ferrol Vello</div>
       </a>
 
-      <nav class="nav" aria-label="Navegación principal">
+      <nav class="nav">
         <a class="nav-link" href="index.html">Inicio</a>
         <a class="nav-link" href="quen-somos.html">Quen somos</a>
         <a class="nav-link" href="que-facemos.html">Que facemos</a>
         <a class="nav-link" href="documentos.html">Documentos</a>
         <a class="nav-link is-active" href="contacto.html">Contacto</a>
       </nav>
-
-      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <div class="nav-mobile" id="nav-mobile" hidden>
-      <div class="container nav-mobile-inner">
-        <a href="index.html">Inicio</a>
-        <a href="quen-somos.html">Quen somos</a>
-        <a href="que-facemos.html">Que facemos</a>
-        <a href="documentos.html">Documentos</a>
-        <a href="contacto.html">Contacto</a>
-      </div>
     </div>
   </header>
 
-  <main id="contido">
+  <!-- CONTIDO -->
+  <main>
+
     <section class="section">
       <div class="container">
-        <div class="page-head">
-          <div class="crumbs">
-            <a href="index.html">Inicio</a><span>·</span><span>Contacto</span>
-          </div>
-          <h1>Contacto</h1>
-          <p class="muted">
-            Se queres colaborar, enviar documentación ou propoñer unha incidencia, escríbenos.
-          </p>
-        </div>
 
-        <div class="contact card">
+        <div class="card contact">
+
           <div class="contact-left">
-            <h2 class="h2">Escríbenos</h2>
+            <h2>Contacto</h2>
             <p class="muted">
-              Recomendación: asunto claro e achega localización, data, fotos e descrición breve.
+              Este formulario está destinado a comunicacións cidadás, propostas,
+              avisos veciñais e contacto institucional.
             </p>
-
-            <div class="contact-items">
-              <div class="contact-item">
-                <div class="contact-k">Email</div>
-                <div class="contact-v">
-                  <a href="mailto:contacto@ferrolvello.org">contacto@ferrolvello.org</a>
-                </div>
-              </div>
-              <div class="contact-item">
-                <div class="contact-k">Ámbito</div>
-                <div class="contact-v">Ferrol Vello e barrios de Ferrol</div>
-              </div>
-              <div class="contact-item">
-                <div class="contact-k">Resposta</div>
-                <div class="contact-v">Confirmación de recepción cando proceda</div>
-              </div>
-            </div>
 
             <div class="callout">
-              <p class="callout-title">Consello</p>
-              <p class="callout-text">Se envías fotos, indica data/hora aproximada e punto exacto (rúa/número).</p>
+              <p class="callout-text">
+                ⚠️ Este formulario non é un servizo de emerxencias.
+                Para situacións urxentes, contacta cos servizos correspondentes.
+              </p>
             </div>
           </div>
 
-          <form class="contact-form" action="#" method="post" aria-label="Formulario (pendente de activación)">
-            <label>
-              <span>Nome</span>
-              <input type="text" name="nome" placeholder="O teu nome" autocomplete="name" />
-            </label>
-            <label>
-              <span>Email</span>
-              <input type="email" name="email" placeholder="ti@exemplo.gal" autocomplete="email" />
-            </label>
-            <label>
-              <span>Mensaxe</span>
-              <textarea name="mensaxe" rows="6" placeholder="Describe a incidencia ou proposta..."></textarea>
-            </label>
-            <button class="btn btn-primary" type="submit" disabled title="Activarás o envío cando teñas backend ou servizo de formularios">
-              Enviar (próximamente)
-            </button>
-            <p class="muted tiny">
-              * Para envío real, integraremos un servizo (Formspree/Netlify Forms) ou un backend propio.
+          <div class="contact-form">
+
+            <!-- ===== FORMULARIO TALLY (PEGAR TAL CUAL) ===== -->
+            <iframe
+              data-tally-src="https://tally.so/embed/vGeB00?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+              loading="lazy"
+              width="100%"
+              height="200"
+              frameborder="0"
+              marginheight="0"
+              marginwidth="0"
+              title="Contacto · Observatorio Cidadá Ferrol Vello">
+            </iframe>
+            <!-- ===== FIN FORMULARIO TALLY ===== -->
+
+            <p class="tiny muted">
+              Ao enviar este formulario aceptas o tratamento dos datos conforme á lexislación vixente
+              en materia de protección de datos. Os datos non se empregarán con fins comerciais.
             </p>
-          </form>
+
+          </div>
+
         </div>
 
       </div>
     </section>
+
   </main>
 
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container footer-inner">
-      <div class="footer-left">
-        <span class="muted">© <span id="year"></span> · Observatorio Cidadá Ferrol Vello</span>
-      </div>
-      <div class="footer-right">
-        <a class="muted" href="mailto:contacto@ferrolvello.org">contacto@ferrolvello.org</a>
-      </div>
+      <span class="tiny muted">
+        © Observatorio Cidadá Ferrol Vello
+      </span>
+      <span class="tiny muted">
+        contacto@ferrolvello.org
+      </span>
     </div>
   </footer>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+</body>
+</html>
 
-    const btn = document.querySelector('.nav-toggle');
-    const panel = document.getElementById('nav-mobile');
-
-    btn?.addEventListener('click', () => {
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.se
