@@ -1,31 +1,149 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="gl">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Documentos — Observatorio Cidadá Ferrol Vello." />
   <title>Documentos · Observatorio Cidadá Ferrol Vello</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css?v=5" />
+  <meta name="theme-color" content="#0b1020" />
 </head>
+
 <body>
+  <a class="skip-link" href="#contido">Saltar ao contido</a>
 
-<nav>
-  <a href="index.html">Inicio</a>
-  <a href="quen-somos.html">Quen somos</a>
-  <a href="que-facemos.html">Que facemos</a>
-  <a href="documentos.html">Documentos</a>
-  <a href="contacto.html">Contacto</a>
-</nav>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Inicio — Observatorio Cidadá Ferrol Vello">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="assets/logo-ferrolvello.svg" alt="Observatorio Cidadá Ferrol Vello" />
+        </span>
+        <span class="brand-name">Observatorio Cidadá Ferrol Vello</span>
+      </a>
 
-<h1>Documentos</h1>
+      <nav class="nav" aria-label="Navegación principal">
+        <a class="nav-link" href="index.html">Inicio</a>
+        <a class="nav-link" href="quen-somos.html">Quen somos</a>
+        <a class="nav-link" href="que-facemos.html">Que facemos</a>
+        <a class="nav-link is-active" href="documentos.html">Documentos</a>
+        <a class="nav-link" href="contacto.html">Contacto</a>
+      </nav>
 
-<ul>
-  <li><a href="docs/estatutos.pdf">Estatutos</a></li>
-  <li><a href="docs/acta-fundacional.pdf">Acta fundacional</a></li>
-  <li><a href="docs/comunicados/">Comunicados</a></li>
-</ul>
+      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
 
-<footer>
-© 2026 · Observatorio Cidadá Ferrol Vello
-</footer>
+    <div class="nav-mobile" id="nav-mobile" hidden>
+      <div class="container nav-mobile-inner">
+        <a href="index.html">Inicio</a>
+        <a href="quen-somos.html">Quen somos</a>
+        <a href="que-facemos.html">Que facemos</a>
+        <a href="documentos.html">Documentos</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
+    </div>
+  </header>
 
+  <main id="contido">
+    <section class="section">
+      <div class="container">
+        <div class="page-head">
+          <div class="crumbs">
+            <a href="index.html">Inicio</a><span>·</span><span>Documentos</span>
+          </div>
+          <h1>Documentos</h1>
+          <p class="muted">
+            Comunicados, informes e materiais verificables. (Sección en construción: iremos publicando por lotes.)
+          </p>
+        </div>
+
+        <div class="docs card pad">
+          <div class="docs-row">
+            <div>
+              <h2 class="h2">Repositorio público</h2>
+              <p class="muted">Aquí enlazarás PDFs, comunicados e anexos cando estean listos.</p>
+            </div>
+            <a class="btn btn-ghost btn-small" href="#" aria-disabled="true" title="Engadirás a ligazón cando estea dispoñible">
+              Ver repositorio
+            </a>
+          </div>
+
+          <div class="divider"></div>
+
+          <ul class="doc-list">
+            <li class="doc-item">
+              <span class="doc-k">Modelo de comunicado</span>
+              <span class="doc-v muted">Próximamente</span>
+            </li>
+            <li class="doc-item">
+              <span class="doc-k">Informe de incidencias</span>
+              <span class="doc-v muted">Próximamente</span>
+            </li>
+            <li class="doc-item">
+              <span class="doc-k">Guía de participación veciñal</span>
+              <span class="doc-v muted">Próximamente</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="two-col">
+          <section class="card pad">
+            <h2 class="h2">Formato recomendado</h2>
+            <ul class="list">
+              <li><span class="bullet"></span> Data, lugar, descrición breve e impacto.</li>
+              <li><span class="bullet"></span> Evidencias: fotos, vídeos, rexistros, fontes.</li>
+              <li><span class="bullet"></span> Cronoloxía: feitos en orde e trazabilidade.</li>
+              <li><span class="bullet"></span> Proposta: solucións e responsables.</li>
+            </ul>
+          </section>
+
+          <section class="card pad">
+            <h2 class="h2">Envío de material</h2>
+            <p class="muted">Se queres achegar documentación para unha análise, escríbenos co asunto “DOCUMENTACIÓN”.</p>
+            <div class="spacer-10"></div>
+            <a class="btn btn-primary" href="mailto:contacto@ferrolvello.org?subject=DOCUMENTACI%C3%93N">Enviar por email</a>
+          </section>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <span class="muted">© <span id="year"></span> · Observatorio Cidadá Ferrol Vello</span>
+      </div>
+      <div class="footer-right">
+        <a class="muted" href="mailto:contacto@ferrolvello.org">contacto@ferrolvello.org</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const btn = document.querySelector('.nav-toggle');
+    const panel = document.getElementById('nav-mobile');
+
+    btn?.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      panel.hidden = expanded;
+    });
+
+    panel?.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        btn.setAttribute('aria-expanded', 'false');
+        panel.hidden = true;
+      });
+    });
+  </script>
 </body>
 </html>
