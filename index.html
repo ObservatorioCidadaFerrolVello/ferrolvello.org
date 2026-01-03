@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=5" />
   <meta name="theme-color" content="#0b1020" />
 </head>
 
@@ -21,13 +21,11 @@
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Inicio — Observatorio Cidadá Ferrol Vello">
         <span class="brand-mark" aria-hidden="true">
-          <!-- ✅ LOGO REAL: está en /assets/logo-ferrolvello.svg -->
           <img src="assets/logo-ferrolvello.svg" alt="Observatorio Cidadá Ferrol Vello" />
         </span>
         <span class="brand-name">Observatorio Cidadá Ferrol Vello</span>
       </a>
 
-      <!-- ✅ MENÚ MULTI-PÁXINA (coas túas páxinas reais) -->
       <nav class="nav" aria-label="Navegación principal">
         <a class="nav-link is-active" href="index.html">Inicio</a>
         <a class="nav-link" href="quen-somos.html">Quen somos</a>
@@ -41,7 +39,6 @@
       </button>
     </div>
 
-    <!-- Menú móbil -->
     <div class="nav-mobile" id="nav-mobile" hidden>
       <div class="container nav-mobile-inner">
         <a href="index.html">Inicio</a>
@@ -73,7 +70,6 @@
           </p>
 
           <div class="hero-actions">
-            <!-- ✅ como xa tes contacto.html, mellor ir á páxina -->
             <a class="btn btn-primary" href="contacto.html">Coñece o Observatorio</a>
             <a class="btn btn-ghost" href="documentos.html">Ver documentos</a>
           </div>
@@ -113,43 +109,12 @@
       </div>
     </section>
 
-    <!-- Nota: como agora tes páxinas separadas, estas seccións poden quedar aquí (como resumo)
-         ou podes recortalas e deixar só teasers con botóns a cada páxina. -->
-
-    <!-- QUEN SOMOS -->
-    <section class="section" id="quen-somos">
+    <!-- BLOQUES RESUMO -->
+    <section class="section">
       <div class="container">
         <div class="section-head">
-          <h2>Quen somos</h2>
-          <p>
-            Unha iniciativa cidadá, independente e aberta, orientada a mellorar barrios e cidade desde a evidencia,
-            a transparencia e a convivencia.
-          </p>
-        </div>
-
-        <div class="grid-3">
-          <article class="mini card">
-            <h3>Independencia</h3>
-            <p>Non dependemos de partidos nin intereses privados. Rendemos contas á veciñanza.</p>
-          </article>
-          <article class="mini card">
-            <h3>Rigor</h3>
-            <p>Traballamos con rexistro, fontes, fotografías, expedientes e cronoloxía verificable.</p>
-          </article>
-          <article class="mini card">
-            <h3>Utilidade pública</h3>
-            <p>Documentamos problemas e propoñemos solucións realistas: administración + veciñanza.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- QUE FACEMOS -->
-    <section class="section" id="que-facemos">
-      <div class="container">
-        <div class="section-head">
-          <h2>Que facemos</h2>
-          <p>Liñas de traballo con impacto directo en habitabilidade, convivencia e transparencia.</p>
+          <h2>Áreas de traballo</h2>
+          <p>Impacto directo en habitabilidade, convivencia e transparencia pública.</p>
         </div>
 
         <div class="areas">
@@ -159,6 +124,8 @@
             <div class="tags">
               <span class="tag">Diagnóstico</span><span class="tag">Evidencia</span><span class="tag">Proposta</span>
             </div>
+            <div class="spacer-10"></div>
+            <a class="btn btn-ghost btn-small" href="que-facemos.html">Ver enfoque</a>
           </article>
 
           <article class="area card">
@@ -167,6 +134,8 @@
             <div class="tags">
               <span class="tag">Mediación</span><span class="tag">Boas prácticas</span><span class="tag">Rede</span>
             </div>
+            <div class="spacer-10"></div>
+            <a class="btn btn-ghost btn-small" href="que-facemos.html#convivencia">Ver liñas</a>
           </article>
 
           <article class="area card">
@@ -175,135 +144,32 @@
             <div class="tags">
               <span class="tag">Trazabilidade</span><span class="tag">Expedientes</span><span class="tag">Acceso</span>
             </div>
+            <div class="spacer-10"></div>
+            <a class="btn btn-ghost btn-small" href="documentos.html">Ver documentos</a>
           </article>
         </div>
-
-        <div class="process card">
-          <h3 class="process-title">Como traballamos</h3>
-          <div class="process-steps">
-            <div class="step">
-              <div class="step-n">1</div>
-              <div class="step-b">
-                <div class="step-t">Recollida</div>
-                <div class="step-p">Feitos, incidencias e testemuños veciñais.</div>
-              </div>
-            </div>
-            <div class="step">
-              <div class="step-n">2</div>
-              <div class="step-b">
-                <div class="step-t">Verificación</div>
-                <div class="step-p">Contraste con fontes, rexistros e contexto.</div>
-              </div>
-            </div>
-            <div class="step">
-              <div class="step-n">3</div>
-              <div class="step-b">
-                <div class="step-t">Documento</div>
-                <div class="step-p">Informe e proposta, publicable e utilizable.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </div>
     </section>
 
-    <!-- DOCUMENTOS -->
-    <section class="section" id="documentos">
+    <section class="section">
       <div class="container">
         <div class="section-head">
-          <h2>Documentos</h2>
-          <p>Comunicados, informes e materiais verificables (en preparación).</p>
+          <h2>Como participar</h2>
+          <p>Se tes unha incidencia, documentación, fotos ou queres colaborar, escríbenos.</p>
         </div>
 
-        <div class="docs card">
-          <div class="docs-row">
-            <div>
-              <h3>Repositorio público</h3>
-              <p class="muted">
-                Aquí enlazarás os PDFs e comunicados cando os teñas listos.
-              </p>
-            </div>
-            <a class="btn btn-ghost" href="documentos.html">
-              Ver documentos
-            </a>
-          </div>
-
-          <div class="divider"></div>
-
-          <ul class="doc-list">
-            <li class="doc-item">
-              <span class="doc-k">Modelo de comunicado</span>
-              <span class="doc-v muted">Próximamente</span>
-            </li>
-            <li class="doc-item">
-              <span class="doc-k">Informe de incidencias</span>
-              <span class="doc-v muted">Próximamente</span>
-            </li>
-            <li class="doc-item">
-              <span class="doc-k">Guía de participación veciñal</span>
-              <span class="doc-v muted">Próximamente</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section class="section" id="contacto">
-      <div class="container">
-        <div class="section-head">
-          <h2>Contacto</h2>
-          <p>Se queres colaborar, enviar documentación ou propoñer unha incidencia, escríbenos.</p>
-        </div>
-
-        <div class="contact card">
-          <div class="contact-left">
-            <h3>Escríbenos</h3>
+        <div class="cta card">
+          <div class="cta-left">
+            <h3>Envíanos unha incidencia</h3>
             <p class="muted">
-              Recomendación: usa un asunto claro e achega localización, data, fotos e descrición breve.
+              Asunto claro + localización + data + descrición breve + fotos (se as tes). Se procede, confirmamos recepción.
             </p>
-
-            <div class="contact-items">
-              <div class="contact-item">
-                <div class="contact-k">Email</div>
-                <div class="contact-v">
-                  <a href="mailto:contacto@ferrolvello.org">contacto@ferrolvello.org</a>
-                </div>
-              </div>
-              <div class="contact-item">
-                <div class="contact-k">Ámbito</div>
-                <div class="contact-v">Ferrol Vello e barrios de Ferrol</div>
-              </div>
-              <div class="contact-item">
-                <div class="contact-k">Resposta</div>
-                <div class="contact-v">Con confirmación de recepción cando proceda</div>
-              </div>
-            </div>
           </div>
-
-          <form class="contact-form" action="#" method="post" aria-label="Formulario (pendente de activación)">
-            <label>
-              <span>Nome</span>
-              <input type="text" name="nome" placeholder="O teu nome" autocomplete="name" />
-            </label>
-            <label>
-              <span>Email</span>
-              <input type="email" name="email" placeholder="ti@exemplo.gal" autocomplete="email" />
-            </label>
-            <label>
-              <span>Mensaxe</span>
-              <textarea name="mensaxe" rows="5" placeholder="Describe a incidencia ou proposta..."></textarea>
-            </label>
-            <button class="btn btn-primary" type="submit" disabled title="Activarás o envío cando teñas backend ou servizo de formularios">
-              Enviar (próximamente)
-            </button>
-            <p class="muted tiny">
-              * Para envío real, integraremos un servizo (Formspree/Netlify Forms) ou un backend propio.
-            </p>
-          </form>
+          <div class="cta-right">
+            <a class="btn btn-primary" href="mailto:contacto@ferrolvello.org">Escribir email</a>
+            <a class="btn btn-ghost" href="contacto.html">Ver contacto</a>
+          </div>
         </div>
-
       </div>
     </section>
   </main>
@@ -320,10 +186,8 @@
   </footer>
 
   <script>
-    // ano automático
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // menú móbil
     const btn = document.querySelector('.nav-toggle');
     const panel = document.getElementById('nav-mobile');
 
@@ -333,7 +197,6 @@
       panel.hidden = expanded;
     });
 
-    // pecha menú ao clicar
     panel?.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         btn.setAttribute('aria-expanded', 'false');
