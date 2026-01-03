@@ -664,3 +664,15 @@ button[disabled]{
     height: 980px;
   }
 }
+/* ===== FIX TALLY EMBED ===== */
+.tally-wrap{
+  width:100%;
+  overflow:visible !important;
+}
+
+.tally-wrap iframe{
+  width:100% !important;
+  min-height:1000px;
+  border:0;
+  background:transparent;
+}
