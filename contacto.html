@@ -1,38 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="gl">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contacto · Observatorio Cidadá Ferrol Vello</title>
   <meta name="description" content="Canle de comunicación cidadá, avisos veciñais, propostas e contacto institucional co Observatorio Cidadá Ferrol Vello." />
 
-  <!-- ROMPE CACHÉ (sube el número si vuelves a cambiar estilos) -->
-  <link rel="stylesheet" href="styles.css?v=20260104-1" />
+  <!-- Mantén o mesmo sistema de caché que o resto (cambia v= se queres forzar actualización) -->
+  <link rel="stylesheet" href="styles.css?v=5" />
+  <meta name="theme-color" content="#0b1020" />
 </head>
 
 <body>
-  <a class="skip-link" href="#main">Saltar ao contido</a>
+  <a class="skip-link" href="#contido">Saltar ao contido</a>
 
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Ir ao inicio">
-        <span class="brand-mark" aria-hidden="true" style="display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);overflow:hidden;">
-          <img
-            class="brand-logo"
-            src="assets/logo.svg"
-            alt="Observatorio Cidadá Ferrol Vello"
-            width="44"
-            height="44"
-            loading="eager"
-            decoding="async"
-            style="display:block;width:44px;height:44px;object-fit:contain;"
-            onerror="this.onerror=null; this.src='assets/logo.png';"
-          />
+      <a class="brand" href="index.html" aria-label="Inicio — Observatorio Cidadá Ferrol Vello">
+        <span class="brand-mark" aria-hidden="true">
+          <!-- MESMO LOGO QUE NAS OUTRAS PÁXINAS -->
+          <img src="assets/logo-ferrolvello.svg" alt="Observatorio Cidadá Ferrol Vello" />
         </span>
         <span class="brand-name">Observatorio Cidadá Ferrol Vello</span>
       </a>
 
-      <nav class="nav" aria-label="Navegación">
+      <nav class="nav" aria-label="Navegación principal">
         <a class="nav-link" href="index.html">Inicio</a>
         <a class="nav-link" href="quen-somos.html">Quen somos</a>
         <a class="nav-link" href="que-facemos.html">Que facemos</a>
@@ -40,12 +32,12 @@
         <a class="nav-link is-active" href="contacto.html">Contacto</a>
       </nav>
 
-      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMobile">
+      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile">
         <span></span><span></span><span></span>
       </button>
     </div>
 
-    <div class="nav-mobile" id="navMobile" hidden>
+    <div class="nav-mobile" id="nav-mobile" hidden>
       <div class="container nav-mobile-inner">
         <a href="index.html">Inicio</a>
         <a href="quen-somos.html">Quen somos</a>
@@ -56,19 +48,26 @@
     </div>
   </header>
 
-  <main id="main" class="hero">
-    <div class="container">
-      <div class="card" style="padding:0;">
-        <div class="hero-grid" style="padding:22px;">
-          <!-- Columna esquerda (texto) -->
-          <section class="card hero-left" style="min-height:420px;">
+  <main id="contido">
+    <section class="section">
+      <div class="container">
+
+        <div class="page-head">
+          <div class="crumbs">
+            <a href="index.html">Inicio</a><span>·</span><span>Contacto</span>
+          </div>
+          <h1>Contacto</h1>
+          <p class="muted">
+            Este formulario está destinado a comunicacións cidadás, propostas, avisos veciñais e contacto institucional.
+          </p>
+        </div>
+
+        <div class="two-col">
+          <!-- Columna esquerda: texto -->
+          <section class="card pad" style="min-height:420px;">
             <div class="pill"><span class="dot"></span> Canle oficial</div>
 
-            <h1 class="hero-title">Contacto</h1>
-
-            <p class="hero-lead">
-              Este formulario está destinado a comunicacións cidadás, propostas, avisos veciñais e contacto institucional.
-            </p>
+            <div class="spacer-10"></div>
 
             <div class="callout">
               <p class="callout-title">⚠️ Aviso</p>
@@ -79,22 +78,17 @@
 
             <div class="divider"></div>
 
-            <p class="tiny muted">
+            <p class="muted">
               Tamén podes escribir a: <strong>contacto@ferrolvello.org</strong>
             </p>
           </section>
 
-          <!-- Columna dereita (Tally) -->
-          <section class="card hero-right" style="min-height:420px;">
-            <h2 class="card-title" style="margin-bottom:10px;">Formulario</h2>
+          <!-- Columna dereita: Tally -->
+          <section class="card pad">
+            <h2 class="h2" style="margin-top:0;">Formulario</h2>
 
-            <!--
-              CLAVE: Tally pinta etiquetas oscuras.
-              Como es un IFRAME, tu CSS NO puede recolorear el interior.
-              Solución robusta: poner el iframe dentro de una "tarjeta" blanca.
-              Lo fuerzo aquí con style para que funcione aunque styles.css esté cacheado.
-            -->
-            <div class="tally-card" style="background:#fff;border-radius:18px;padding:14px;border:1px solid rgba(0,0,0,.10);box-shadow:0 18px 60px rgba(0,0,0,.35);overflow:hidden;">
+            <!-- TARXETA BRANCA PARA O IFRAME (labels escuros de Tally) -->
+            <div class="tally-card" style="background:#fff;border-radius:18px;padding:14px;border:1px solid rgba(0,0,0,.10);box-shadow:0 18px 60px rgba(0,0,0,.30);overflow:hidden;">
               <iframe
                 data-tally-src="https://tally.so/embed/vGeBo0?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
                 loading="lazy"
@@ -109,28 +103,33 @@
             </div>
 
             <noscript>
-              <p class="tiny muted" style="margin-top:12px;">
+              <p class="muted" style="margin-top:12px;">
                 Se non ves o formulario, ábreo aquí:
                 <a href="https://tally.so/r/vGeBo0" style="text-decoration:underline;">https://tally.so/r/vGeBo0</a>
               </p>
             </noscript>
 
-            <p class="tiny muted" style="margin-top:12px; line-height:1.5;">
+            <p class="muted" style="margin-top:12px; line-height:1.6;">
               Ao enviar este formulario aceptas o tratamento dos datos persoais conforme á lexislación vixente en materia de protección de datos.
               Os datos serán utilizados exclusivamente para a xestión da comunicación remitida ao Observatorio Cidadá Ferrol Vello e non se empregarán con fins comerciais nin se cederán a terceiros alleos á actividade do observatorio.
             </p>
           </section>
         </div>
-      </div>
 
-      <footer class="footer">
-        <div class="container footer-inner">
-          <div class="tiny muted">© Observatorio Cidadá Ferrol Vello</div>
-          <div class="tiny"><a href="mailto:contacto@ferrolvello.org">contacto@ferrolvello.org</a></div>
-        </div>
-      </footer>
-    </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <span class="muted">© <span id="year"></span> · Observatorio Cidadá Ferrol Vello</span>
+      </div>
+      <div class="footer-right">
+        <a class="muted" href="mailto:contacto@ferrolvello.org">contacto@ferrolvello.org</a>
+      </div>
+    </div>
+  </footer>
 
   <!-- Script oficial para embeds (dynamicHeight) -->
   <script>
@@ -149,18 +148,24 @@
     })();
   </script>
 
-  <!-- Menú móbil -->
   <script>
-    (function(){
-      const btn = document.querySelector('.nav-toggle');
-      const panel = document.getElementById('navMobile');
-      if(!btn || !panel) return;
-      btn.addEventListener('click', () => {
-        const open = panel.hasAttribute('hidden') === false;
-        if(open){ panel.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); }
-        else { panel.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); }
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const btn = document.querySelector('.nav-toggle');
+    const panel = document.getElementById('nav-mobile');
+
+    btn?.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      panel.hidden = expanded;
+    });
+
+    panel?.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        btn.setAttribute('aria-expanded', 'false');
+        panel.hidden = true;
       });
-    })();
+    });
   </script>
 </body>
 </html>
