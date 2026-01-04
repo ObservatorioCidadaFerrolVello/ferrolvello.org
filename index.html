@@ -17,46 +17,9 @@
 <body>
   <a class="skip-link" href="#contido">Saltar ao contido</a>
 
+  <!-- HEADER ÚNICO (compartido en todas as páxinas) -->
   <header class="site-header" id="site-header"></header>
-<script src="assets/site-header.js" defer></script>
-
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Inicio — Observatorio Cidadá Ferrol Vello">
-        <span class="brand-mark" aria-hidden="true">
-          <img src="assets/logo-ferrolvello.svg" alt="Observatorio Cidadá Ferrol Vello" />
-        </span>
-        <span class="brand-name">Observatorio Cidadá Ferrol Vello</span>
-      </a>
-
-      <nav class="nav" aria-label="Navegación principal">
-        <a class="nav-link is-active" href="index.html">Inicio</a>
-        <a class="nav-link" href="quen-somos.html">Quen somos</a>
-        <a class="nav-link" href="que-facemos.html">Que facemos</a>
-        <a class="nav-link" href="documentos.html">Documentos</a>
-        <a class="nav-link" href="notas-prensa.html">Prensa</a>
-        <a class="nav-link" href="enlaces.html">Enlaces</a>
-        <a class="nav-link" href="historial.html">Historial</a>
-        <a class="nav-link" href="contacto.html">Contacto</a>
-      </nav>
-
-      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <div class="nav-mobile" id="nav-mobile" hidden>
-      <div class="container nav-mobile-inner">
-        <a href="index.html">Inicio</a>
-        <a href="quen-somos.html">Quen somos</a>
-        <a href="que-facemos.html">Que facemos</a>
-        <a href="documentos.html">Documentos</a>
-        <a href="notas-prensa.html">Prensa</a>
-        <a href="enlaces.html">Enlaces</a>
-        <a href="historial.html">Historial</a>
-        <a href="contacto.html">Contacto</a>
-      </div>
-    </div>
-  </header>
+  <script src="assets/site-header.js" defer></script>
 
   <main id="contido">
     <!-- HERO -->
@@ -78,7 +41,7 @@
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="contacto.html">Coñece o Observatorio</a>
+            <a class="btn btn-primary" href="quen-somos.html">Coñece o Observatorio</a>
             <a class="btn btn-ghost" href="documentos.html">Ver documentos</a>
           </div>
 
@@ -190,6 +153,7 @@
       </div>
     </section>
 
+    <!-- COMO PARTICIPAR -->
     <section class="section">
       <div class="container">
         <div class="section-head">
@@ -225,48 +189,29 @@
   </footer>
 
   <script>
+    // Ano automático
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    const btn = document.querySelector('.nav-toggle');
-    const panel = document.getElementById('nav-mobile');
+    // Menú móbil: funciona porque o header compartido crea .nav-toggle e #nav-mobile
+    window.addEventListener('DOMContentLoaded', () => {
+      const btn = document.querySelector('.nav-toggle');
+      const panel = document.getElementById('nav-mobile');
 
-    btn?.addEventListener('click', () => {
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!expanded));
-      panel.hidden = expanded;
-    });
+      if (!btn || !panel) return;
 
-    panel?.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        btn.setAttribute('aria-expanded', 'false');
-        panel.hidden = true;
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        panel.hidden = expanded;
+      });
+
+      panel.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          btn.setAttribute('aria-expanded', 'false');
+          panel.hidden = true;
+        });
       });
     });
   </script>
 </body>
 </html>
-<header class="site-header">
-  <div class="header-inner">
-    <a class="brand" href="index.html" aria-label="Ir a inicio">
-      <span class="brand-logo">
-        <img src="assets/logo.svg" alt="Observatorio Cidadá Ferrol Vello" />
-      </span>
-
-      <span class="brand-text">
-        <span class="brand-title">Observatorio Cidadá</span>
-        <span class="brand-sub">Ferrol Vello</span>
-      </span>
-    </a>
-
-    <nav class="top-nav" aria-label="Navegación principal">
-      <a class="nav-link is-active" href="index.html">Inicio</a>
-      <a class="nav-link" href="quensomos.html">Quen somos</a>
-      <a class="nav-link" href="que-facemos.html">Que facemos</a>
-      <a class="nav-link" href="documentos.html">Documentos</a>
-      <a class="nav-link" href="prensa.html">Prensa</a>
-      <a class="nav-link" href="enlaces.html">Enlaces</a>
-      <a class="nav-link" href="historial.html">Historial</a>
-      <a class="nav-link" href="contacto.html">Contacto</a>
-    </nav>
-  </div>
-</header>
