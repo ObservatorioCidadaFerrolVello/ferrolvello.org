@@ -82,3 +82,4 @@
   window.addEventListener("resize", () => setOpen(false));
   window.addEventListener("pagehide", () => setOpen(false));
 })();
+<link rel="stylesheet" href="/styles.css?v=7" />
