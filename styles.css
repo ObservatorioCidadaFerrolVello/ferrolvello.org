@@ -731,3 +731,40 @@ button[disabled]{
   border-radius: 14px;
   padding: 10px 12px;
 }
+/* NAV: trazo inferior animado */
+.nav-link{
+  position: relative;
+  text-decoration: none;
+  transition: color .18s ease;
+}
+
+/* el trazo */
+.nav-link::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;               /* distancia bajo el texto (ajusta) */
+  width: 0;
+  height: 3px;                /* grosor del trazo */
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: rgba(120,180,255,.85);
+  box-shadow: 0 6px 18px rgba(120,180,255,.22);
+  transition: width .18s ease, opacity .18s ease;
+  opacity: 0;
+}
+
+/* hover */
+.nav-link:hover{
+  color: #fff;
+}
+.nav-link:hover::after{
+  width: 70%;                 /* largo del trazo (ajusta 60–90%) */
+  opacity: 1;
+}
+
+/* activo (página actual) */
+.nav-link.is-active::after{
+  width: 70%;
+  opacity: 1;
+}
