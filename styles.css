@@ -917,3 +917,121 @@ button[disabled]{
 .site-header{
   overflow: visible;  /* por si algo lo estaba cortando */
 }
+/* =========================
+   HEADER + MENÚ MÓVIL (FIX)
+   ========================= */
+
+/* Importante: que [hidden] realmente oculte */
+[hidden]{ display:none !important; }
+
+/* Cabecera por encima de todo */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+
+/* Layout del header */
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 14px;
+}
+
+/* Botón burger (asegurar que recibe clicks) */
+.nav-toggle{
+  display:none;           /* en desktop no */
+  position: relative;
+  z-index: 10000;
+  width: 44px;
+  height: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.06);
+  cursor: pointer;
+}
+
+.nav-toggle span{
+  display:block;
+  height: 2px;
+  width: 18px;
+  margin: 4px auto;
+  background: rgba(255,255,255,0.85);
+  border-radius: 2px;
+}
+
+/* Menú móvil (panel) */
+.nav-mobile{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 72px;                 /* ajusta si tu header es más alto */
+  z-index: 9998;
+
+  background: rgba(10,12,18,0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+  padding: 10px 0;
+}
+
+.nav-mobile .nav-mobile-inner{
+  display: grid;
+  gap: 6px;
+}
+
+.nav-mobile a{
+  display:block;
+  padding: 10px 14px;
+  margin: 0 10px;
+  border-radius: 12px;
+
+  color: rgba(255,255,255,0.86);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.nav-mobile a:hover{
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.98);
+}
+
+/* =========================
+   RESPONSIVE: a partir de aquí
+   ========================= */
+@media (max-width: 980px){
+  /* Oculta el menú horizontal y muestra burger */
+  .nav{ display:none !important; }
+  .nav-toggle{ display:block; }
+
+  /* Ajustes marca para que no “rompa” */
+  .brand-name{
+    font-size: 15px;
+    line-height: 1.1;
+  }
+
+  /* Evita que el logo/brand “empuje” */
+  .brand-mark{
+    width: 150px;     /* si tu logo es muy ancho, baja a 140 */
+    height: 50px;
+    padding: 8px 10px;
+  }
+
+  .brand-mark img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+
+  /* Si el panel tapa demasiado, baja el top */
+  .nav-mobile{ top: 68px; }
+}
+
+@media (max-width: 520px){
+  .brand-name{ font-size: 14px; }
+  .brand-mark{ width: 140px; height: 48px; }
+  .nav-mobile a{ padding: 10px 12px; }
+}
