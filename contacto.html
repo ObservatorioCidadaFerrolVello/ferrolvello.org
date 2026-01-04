@@ -1,112 +1,146 @@
 <!DOCTYPE html>
 <html lang="gl">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contacto · Observatorio Cidadá Ferrol Vello</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- SEO básico -->
-  <meta name="description" content="Formulario de contacto do Observatorio Cidadá Ferrol Vello para comunicacións cidadás, propostas, avisos veciñais e contacto institucional.">
-
-  <!-- CSS principal -->
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- Script oficial de Tally (cargar UNA vez) -->
-  <script async src="https://tally.so/widgets/embed.js"></script>
+  <meta name="description" content="Canle de comunicación cidadá, avisos veciñais, propostas e contacto institucional co Observatorio Cidadá Ferrol Vello." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Saltar ao contido</a>
 
-  <!-- HEADER (usa el mismo que el resto de la web si ya lo tienes) -->
   <header class="site-header">
     <div class="container header-inner">
-      <div class="brand">
-        <div class="brand-mark">
-          <img src="assets/logo.svg" alt="Observatorio Cidadá Ferrol Vello">
-        </div>
-        <div class="brand-name">Observatorio Cidadá Ferrol Vello</div>
-      </div>
+      <a class="brand" href="index.html" aria-label="Ir ao inicio">
+        <span class="brand-mark" aria-hidden="true">
+          <!-- IMPORTANTE: revisa que este ficheiro exista exactamente con este nome -->
+          <img src="assets/logo.svg" alt="Observatorio Cidadá Ferrol Vello" />
+        </span>
+        <span class="brand-name">Observatorio Cidadá Ferrol Vello</span>
+      </a>
 
-      <nav class="nav">
+      <nav class="nav" aria-label="Navegación">
         <a class="nav-link" href="index.html">Inicio</a>
         <a class="nav-link" href="quen-somos.html">Quen somos</a>
         <a class="nav-link" href="que-facemos.html">Que facemos</a>
         <a class="nav-link" href="documentos.html">Documentos</a>
         <a class="nav-link is-active" href="contacto.html">Contacto</a>
       </nav>
+
+      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="navMobile">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <div class="nav-mobile" id="navMobile" hidden>
+      <div class="container nav-mobile-inner">
+        <a href="index.html">Inicio</a>
+        <a href="quen-somos.html">Quen somos</a>
+        <a href="que-facemos.html">Que facemos</a>
+        <a href="documentos.html">Documentos</a>
+        <a href="contacto.html">Contacto</a>
+      </div>
     </div>
   </header>
 
-  <!-- CONTENIDO -->
-  <main class="container section">
+  <main id="main" class="hero">
+    <div class="container">
+      <div class="card hero-left" style="padding:0;">
+        <div class="hero-grid" style="padding:22px;">
+          <!-- Columna esquerda (texto) -->
+          <section class="card hero-left" style="min-height: 420px;">
+            <div class="pill"><span class="dot"></span> Canle oficial</div>
 
-    <div class="hero-grid">
+            <h1 class="hero-title">Contacto</h1>
 
-      <!-- COLUMNA IZQUIERDA -->
-      <div class="card hero-left">
-        <h1 class="hero-title">Contacto</h1>
+            <p class="hero-lead">
+              Este formulario está destinado a comunicacións cidadás, propostas, avisos veciñais e contacto institucional.
+            </p>
 
-        <p class="hero-lead">
-          Este formulario está destinado a comunicacións cidadás, propostas,
-          avisos veciñais e contacto institucional.
-        </p>
+            <div class="callout">
+              <p class="callout-title">⚠️ Aviso</p>
+              <p class="callout-text">
+                Este formulario non é un servizo de emerxencias. Para situacións urxentes, contacta cos servizos correspondentes.
+              </p>
+            </div>
 
-        <div class="callout">
-          <p class="callout-text">
-            ⚠️ Este formulario <strong>non é un servizo de emerxencias</strong>.
-            Para situacións urxentes, contacta cos servizos correspondentes.
-          </p>
+            <div class="divider"></div>
+
+            <p class="tiny muted">
+              Tamén podes escribir a: <strong>contacto@ferrolvello.org</strong>
+            </p>
+          </section>
+
+          <!-- Columna dereita (Tally) -->
+          <section class="card hero-right" style="min-height: 420px;">
+            <h2 class="card-title" style="margin-bottom:10px;">Formulario</h2>
+
+            <!-- EMBED TALLY -->
+            <iframe
+              data-tally-src="https://tally.so/embed/vGeBo0?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+              loading="lazy"
+              width="100%"
+              height="900"
+              frameborder="0"
+              marginheight="0"
+              marginwidth="0"
+              title="Contacto · Observatorio Cidadá Ferrol Vello"
+              style="border:0; border-radius: 18px; overflow:hidden; background: transparent;"
+            ></iframe>
+
+            <noscript>
+              <p class="tiny muted" style="margin-top:12px;">
+                Se non ves o formulario, ábreo aquí:
+                <a href="https://tally.so/r/vGeBo0" style="text-decoration:underline;">https://tally.so/r/vGeBo0</a>
+              </p>
+            </noscript>
+
+            <p class="tiny muted" style="margin-top:12px; line-height:1.5;">
+              Ao enviar este formulario aceptas o tratamento dos datos persoais conforme á lexislación vixente en materia de protección de datos.
+              Os datos serán utilizados exclusivamente para a xestión da comunicación remitida ao Observatorio Cidadá Ferrol Vello e non se empregarán con fins comerciais nin se cederán a terceiros alleos á actividade do observatorio.
+            </p>
+          </section>
         </div>
       </div>
 
-      <!-- COLUMNA DERECHA (FORMULARIO) -->
-      <div class="card hero-right">
-
-        <!-- CONTENEDOR TALLY -->
-        <div class="tally-wrap">
-
-          <iframe
-            data-tally-src="https://tally.so/embed/vGeBo0?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-            loading="lazy"
-            width="100%"
-            height="900"
-            frameborder="0"
-            marginheight="0"
-            marginwidth="0"
-            title="Contacto · Observatorio Cidadá Ferrol Vello">
-          </iframe>
-
+      <footer class="footer">
+        <div class="container footer-inner">
+          <div class="tiny muted">© Observatorio Cidadá Ferrol Vello</div>
+          <div class="tiny"><a href="mailto:contacto@ferrolvello.org">contacto@ferrolvello.org</a></div>
         </div>
-
-        <!-- TEXTO LEGAL (VISIBLE AUNQUE TALLY FALLE) -->
-        <div class="callout" style="margin-top:16px;">
-          <p class="tiny muted">
-            Ao enviar este formulario aceptas o tratamento dos datos conforme á
-            lexislación vixente en materia de protección de datos.
-            <br><br>
-            Os datos serán utilizados exclusivamente para a xestión da comunicación
-            remitida ao Observatorio Cidadá Ferrol Vello e <strong>non se empregarán con fins comerciais
-            nin se cederán a terceiros alleos</strong> á actividade do observatorio.
-          </p>
-        </div>
-
-      </div>
-
+      </footer>
     </div>
-
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="tiny muted">
-        © Observatorio Cidadá Ferrol Vello
-      </div>
-      <div class="tiny">
-        <a href="mailto:contacto@ferrolvello.org">contacto@ferrolvello.org</a>
-      </div>
-    </div>
-  </footer>
+  <!-- Script oficial para embeds (dinamicHeight) -->
+  <script>
+    var d = document, w = "https://tally.so/widgets/embed.js";
+    var v = function () {
+      if (typeof Tally !== "undefined") Tally.loadEmbeds();
+      else d.querySelectorAll('iframe[data-tally-src]:not([src])').forEach(function (e) { e.src = e.dataset.tallySrc; });
+    };
+    if (typeof Tally !== "undefined") v();
+    else if (d.querySelector('script[src="' + w + '"]') == null) {
+      var s = d.createElement("script");
+      s.src = w; s.onload = v; s.onerror = v;
+      d.body.appendChild(s);
+    }
+  </script>
 
+  <!-- Menú móvil -->
+  <script>
+    (function(){
+      const btn = document.querySelector('.nav-toggle');
+      const panel = document.getElementById('navMobile');
+      if(!btn || !panel) return;
+      btn.addEventListener('click', () => {
+        const open = panel.hasAttribute('hidden') === false;
+        if(open){ panel.setAttribute('hidden',''); btn.setAttribute('aria-expanded','false'); }
+        else { panel.removeAttribute('hidden'); btn.setAttribute('aria-expanded','true'); }
+      });
+    })();
+  </script>
 </body>
 </html>
