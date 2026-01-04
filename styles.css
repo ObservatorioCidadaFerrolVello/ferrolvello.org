@@ -722,3 +722,23 @@ button[disabled]{ opacity: .55; cursor: not-allowed; }
   border:0;
   background:transparent;
 }
+[hidden]{ display:none !important; }
+
+.nav-mobile{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: var(--header-h, 86px);
+  z-index: 9998;
+
+  background: rgba(7,10,18,.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  max-height: calc(100vh - var(--header-h, 86px));
+  overflow: auto;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+html{ scroll-padding-top: var(--header-h, 86px); }
+body{ padding-top: var(--header-h, 86px); }
