@@ -906,3 +906,14 @@ button[disabled]{
   .brand-title{ font-size: 16px; }
   .brand-sub{ font-size: 14px; }
 }
+.top-nav{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;     /* CLAVE: que no desaparezcan */
+  justify-content:flex-end;
+}
+
+.site-header{
+  overflow: visible;  /* por si algo lo estaba cortando */
+}
