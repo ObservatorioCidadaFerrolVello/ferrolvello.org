@@ -10,60 +10,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=6" />
+  <link rel="stylesheet" href="/styles.css?v=9" />
   <meta name="theme-color" content="#0b1020" />
 </head>
 
 <body>
   <a class="skip-link" href="#contido">Saltar ao contido</a>
 
+  <!-- CABECEIRA ÚNICA -->
   <header class="site-header" id="site-header"></header>
-<script src="/assets/site-header.js" defer></script>
-
-    <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="Inicio — Observatorio Cidadá Ferrol Vello">
-        <span class="brand-mark" aria-hidden="true">
-          <img src="assets/logo-ferrolvello.svg" alt="Observatorio Cidadá Ferrol Vello" />
-        </span>
-        <span class="brand-name">Observatorio Cidadá Ferrol Vello</span>
-      </a>
-
-      <nav class="nav" aria-label="Navegación principal">
-        <a class="nav-link" href="index.html">Inicio</a>
-        <a class="nav-link" href="quen-somos.html">Quen somos</a>
-        <a class="nav-link" href="que-facemos.html">Que facemos</a>
-        <a class="nav-link is-active" href="documentos.html">Documentos</a>
-        <a class="nav-link" href="notas-prensa.html">Prensa</a>
-        <a class="nav-link" href="enlaces.html">Enlaces</a>
-        <a class="nav-link" href="historial.html">Historial</a>
-        <a class="nav-link" href="contacto.html">Contacto</a>
-      </nav>
-
-      <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-mobile">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-
-    <div class="nav-mobile" id="nav-mobile" hidden>
-      <div class="container nav-mobile-inner">
-        <a href="index.html">Inicio</a>
-        <a href="quen-somos.html">Quen somos</a>
-        <a href="que-facemos.html">Que facemos</a>
-        <a href="documentos.html">Documentos</a>
-        <a href="notas-prensa.html">Prensa</a>
-        <a href="enlaces.html">Enlaces</a>
-        <a href="historial.html">Historial</a>
-        <a href="contacto.html">Contacto</a>
-      </div>
-    </div>
-  </header>
+  <script src="/assets/site-header.js?v=4" defer></script>
 
   <main id="contido">
     <section class="section">
       <div class="container">
         <div class="page-head">
           <div class="crumbs">
-            <a href="index.html">Inicio</a><span>·</span><span>Documentos</span>
+            <a href="/index.html">Inicio</a><span>·</span><span>Documentos</span>
           </div>
           <h1>Documentos</h1>
           <p class="muted">
@@ -77,6 +40,8 @@
               <h2 class="h2">Repositorio público</h2>
               <p class="muted">Aquí enlazarás PDFs, comunicados e anexos cando estean listos.</p>
             </div>
+
+            <!-- Cando teñas repo/drive público, substitúe o href -->
             <a class="btn btn-ghost btn-small" href="#" aria-disabled="true" title="Engadirás a ligazón cando estea dispoñible">
               Ver repositorio
             </a>
@@ -136,23 +101,7 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    const btn = document.querySelector('.nav-toggle');
-    const panel = document.getElementById('nav-mobile');
-
-    btn?.addEventListener('click', () => {
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', String(!expanded));
-      panel.hidden = expanded;
-    });
-
-    panel?.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        btn.setAttribute('aria-expanded', 'false');
-        panel.hidden = true;
-      });
-    });
   </script>
 </body>
 </html>
-<link rel="stylesheet" href="/styles.css?v=7" />
+
