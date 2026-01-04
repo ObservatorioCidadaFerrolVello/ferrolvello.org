@@ -1,4 +1,8 @@
 (() => {
+  // Evita doble inicialización (por cache, doble carga, etc.)
+  if (window.__FV_HEADER_INIT__) return;
+  window.__FV_HEADER_INIT__ = true;
+
   const items = [
     { href: "/index.html", label: "Inicio" },
     { href: "/quen-somos.html", label: "Quen somos" },
@@ -10,9 +14,14 @@
     { href: "/contacto.html", label: "Contacto" }
   ];
 
-  // Página actual (sin query/hash)
-  const current = (location.pathname === "/" ? "/index.html" : location.pathname).toLowerCase();
+  // Normaliza pathname (sin query/hash) y convierte "/" en "/index.html"
+  const normalizePath = (p) => {
+    if (!p || p === "/") return "/index.html";
+    // Por si GitHub Pages entrega "/index.html" o "/"
+    return p.toLowerCase();
+  };
 
+  const current = normalizePath(location.pathname);
   const logoSrc = "/assets/logo-ferrolvello.svg";
 
   const host = document.getElementById("site-header");
@@ -29,7 +38,7 @@
 
       <nav class="nav" aria-label="Navegación principal">
         ${items.map(i => {
-          const active = i.href.toLowerCase() === current ? "is-active" : "";
+          const active = normalizePath(i.href) === current ? "is-active" : "";
           return `<a class="nav-link ${active}" href="${i.href}">${i.label}</a>`;
         }).join("")}
       </nav>
@@ -44,7 +53,10 @@
 
     <div class="nav-mobile" id="nav-mobile" hidden>
       <div class="container nav-mobile-inner">
-        ${items.map(i => `<a href="${i.href}">${i.label}</a>`).join("")}
+        ${items.map(i => {
+          const active = normalizePath(i.href) === current ? ' aria-current="page"' : "";
+          return `<a href="${i.href}"${active}>${i.label}</a>`;
+        }).join("")}
       </div>
     </div>
   `;
@@ -53,33 +65,62 @@
   const panel = host.querySelector("#nav-mobile");
   if (!btn || !panel) return;
 
+  const lockScroll = (lock) => {
+    document.documentElement.style.overflow = lock ? "hidden" : "";
+  };
+
+  const setHeaderHeightVar = () => {
+    // Calcula altura real del header ya renderizado
+    const h = host.offsetHeight || 86;
+    document.documentElement.style.setProperty("--header-h", `${h}px`);
+  };
+
   const setOpen = (open) => {
     btn.setAttribute("aria-expanded", String(open));
     btn.setAttribute("aria-label", open ? "Pechar menú" : "Abrir menú");
     panel.hidden = !open;
-    document.documentElement.style.overflow = open ? "hidden" : "";
+    lockScroll(open);
   };
 
+  // Inicial: set variables y cerrado
+  setHeaderHeightVar();
+  setOpen(false);
+
+  // Toggle
   btn.addEventListener("click", (e) => {
+    e.preventDefault();
     e.stopPropagation();
-    setOpen(btn.getAttribute("aria-expanded") !== "true");
+    const isOpen = btn.getAttribute("aria-expanded") === "true";
+    setOpen(!isOpen);
   });
 
+  // Cierra al clicar un link
   panel.querySelectorAll("a").forEach(a => {
     a.addEventListener("click", () => setOpen(false));
   });
 
+  // Cierra al clicar fuera
   document.addEventListener("click", (e) => {
-    if (btn.getAttribute("aria-expanded") !== "true") return;
+    const isOpen = btn.getAttribute("aria-expanded") === "true";
+    if (!isOpen) return;
     if (host.contains(e.target)) return;
     setOpen(false);
   });
 
+  // Cierra con ESC
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") setOpen(false);
   });
 
-  window.addEventListener("resize", () => setOpen(false));
+  // Recalcula altura y cierra en resize/orientación
+  const onResize = () => {
+    setHeaderHeightVar();
+    setOpen(false);
+  };
+
+  window.addEventListener("resize", onResize, { passive: true });
+  window.addEventListener("orientationchange", onResize, { passive: true });
+
+  // Asegura limpieza si navegas/ocultas
   window.addEventListener("pagehide", () => setOpen(false));
 })();
-<link rel="stylesheet" href="/styles.css?v=7" />
