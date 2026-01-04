@@ -687,3 +687,9 @@ button[disabled]{
   min-height: 900px;
   border:0;
 }
+.brand-logo{
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  display: block;
+}
