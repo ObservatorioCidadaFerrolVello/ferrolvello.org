@@ -706,3 +706,4 @@ button[disabled]{ opacity: .55; cursor: not-allowed; }
 @media (min-width: 980px){
   .tally-wrap iframe{ min-height: 1100px; }
 }
+<link rel="stylesheet" href="/styles.css?v=7" />
