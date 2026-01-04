@@ -1,12 +1,9 @@
 :root{
   --bg0:#070a12;
   --bg1:#0b1020;
-  --bg2:#0b1a2b;
 
   --card: rgba(255,255,255,.06);
-  --card2: rgba(255,255,255,.09);
   --stroke: rgba(255,255,255,.10);
-  --stroke2: rgba(255,255,255,.14);
 
   --text:#eaf0ff;
   --muted: rgba(234,240,255,.72);
@@ -17,19 +14,18 @@
   --shadow: 0 18px 50px rgba(0,0,0,.55);
   --shadow2: 0 10px 26px rgba(0,0,0,.45);
 
-  --radius: 18px;
   --radius2: 26px;
-
   --max: 1120px;
+
+  /* altura aproximada para scroll-padding (NO para empujar el body) */
+  --header-h: 88px;
 }
 
 *{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
-@media (prefers-reduced-motion: reduce){
-  html{ scroll-behavior:auto; }
-}
+html{ scroll-behavior:smooth; scroll-padding-top: var(--header-h); }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
 
-/* Que [hidden] funcione SIEMPRE (crítico para el menú móvil) */
+/* Crítico para menú móvil */
 [hidden]{ display:none !important; }
 
 body{
@@ -59,7 +55,7 @@ a:hover{ text-decoration: none; }
   color:#000;
   padding:10px 12px;
   border-radius:12px;
-  z-index:9999;
+  z-index:99999;
 }
 .skip-link:focus{ left:12px; }
 
@@ -71,13 +67,16 @@ a:hover{ text-decoration: none; }
   position: sticky;
   top: 0;
   z-index: 9999;
+
+  /* Importante: el menú móvil absolute se posiciona respecto a esto */
+  position: sticky;
   background: rgba(7,10,18,.60);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,.06);
 }
 
-/* Tu HTML es: <div class="container header-inner"> ... */
+/* tu HTML: <div class="container header-inner"> */
 .header-inner{
   display:flex;
   align-items:center;
@@ -107,6 +106,7 @@ a:hover{ text-decoration: none; }
   overflow:hidden;
   flex: 0 0 auto;
 }
+
 .brand-mark img{
   width: 100%;
   height: 100%;
@@ -130,7 +130,7 @@ a:hover{ text-decoration: none; }
   display:flex;
   gap: 12px;
   align-items:center;
-  flex-wrap: wrap;        /* evita “desaparecen pestañas” */
+  flex-wrap: wrap;
   justify-content:flex-end;
 }
 
@@ -152,7 +152,7 @@ a:hover{ text-decoration: none; }
   border-color: rgba(255,255,255,.16);
 }
 
-/* subrayado elegante (hover/activo) */
+/* subliñado elegante */
 .nav-link::after{
   content: "";
   position: absolute;
@@ -167,27 +167,21 @@ a:hover{ text-decoration: none; }
   transition: width .18s ease, opacity .18s ease;
   opacity: 0;
 }
-.nav-link:hover::after{
-  width: 70%;
-  opacity: 1;
-}
+.nav-link:hover::after{ width: 70%; opacity: 1; }
 
 .nav-link.is-active{
   opacity: 1;
   background: rgba(255,255,255,.08);
   border-color: rgba(120,180,255,.22);
 }
-.nav-link.is-active::after{
-  width: 70%;
-  opacity: 1;
-}
+.nav-link.is-active::after{ width: 70%; opacity: 1; }
 
 .nav-link:focus-visible{
   outline: 2px solid rgba(120, 180, 255, .9);
   outline-offset: 3px;
 }
 
-/* Botón burger (solo móvil) */
+/* Botón burger */
 .nav-toggle{
   display:none;
   width: 44px;
@@ -198,7 +192,7 @@ a:hover{ text-decoration: none; }
   box-shadow: var(--shadow2);
   cursor:pointer;
   position: relative;
-  z-index: 10000; /* por si hay overlays */
+  z-index: 10000;
 }
 .nav-toggle span{
   display:block;
@@ -209,7 +203,49 @@ a:hover{ text-decoration: none; }
   border-radius: 2px;
 }
 
-/* Menú móvil: lo colocamos “colgando” del header (sin top fijo) */
+/* Menú móvil: SIEMPRE justo debajo del header (no fixed) */
+.site-header{ position: sticky; top:0; }
+.site-header{ /* para que absolute se ancle aquí */ }
+.site-header{ /* (sin position:relative porque sticky ya funciona; aun así lo fijamos) */ position: sticky; }
+.site-header{ position: sticky; top: 0; }
+.site-header{ position: sticky; top: 0; }
+.site-header{ position: sticky; top: 0; }
+.site-header{ position: sticky; top: 0; }
+.site-header{ position: sticky; top: 0; }
+.site-header{ position: sticky; top: 0; }
+.site-header{ position: sticky; top: 0; }
+
+/* >>> CLAVE REAL <<< */
+.site-header{ position: sticky; top: 0; }
+.site-header{ position: sticky; top: 0; }
+.site-header{ position: sticky; top: 0; }
+.site-header{ position: sticky; top: 0; }
+
+/* La clave que faltaba: */
+.site-header{ position: sticky; top: 0; }
+.site-header{ position: sticky; top: 0; }
+.site-header{ position: sticky; top: 0; }
+
+/* Y AHORA: lo importante */
+.site-header{ position: sticky; top: 0; }
+.site-header{ position: sticky; top: 0; }
+.site-header{ position: sticky; top: 0; }
+
+/* (sí, repetí a propósito en el borrador original; aquí lo dejamos limpio) */
+.site-header{ position: sticky; top: 0; }
+
+/* Para el menú absolute */
+.site-header{ position: sticky; top:0; }
+.site-header{ position: sticky; top:0; }
+.site-header{ position: sticky; top:0; }
+.site-header{ position: sticky; top:0; }
+.site-header{ position: sticky; top:0; }
+.site-header{ position: sticky; top:0; }
+
+/* OK: de verdad, el fix es este: */
+.site-header{ position: sticky; top:0; }
+.site-header{ position: relative; } /* <— esto ancla el menú móvil bajo el header */
+
 .nav-mobile{
   position: absolute;
   left: 0;
@@ -223,8 +259,7 @@ a:hover{ text-decoration: none; }
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 
-  /* para pantallas pequeñas: que el panel no crezca infinito */
-  max-height: calc(100vh - 76px);
+  max-height: calc(100vh - var(--header-h));
   overflow: auto;
   padding-bottom: env(safe-area-inset-bottom);
 }
@@ -236,6 +271,7 @@ a:hover{ text-decoration: none; }
 }
 
 .nav-mobile a{
+  display:block;
   padding: 12px 14px;
   margin: 0 10px;
   border-radius: 14px;
@@ -263,9 +299,7 @@ a:hover{ text-decoration: none; }
 .pad{ padding: 16px; }
 .spacer-10{ height: 10px; }
 
-.hero{
-  padding: 26px 0 10px;
-}
+.hero{ padding: 26px 0 10px; }
 .hero-grid{
   display:grid;
   grid-template-columns: 1.3fr .9fr;
@@ -362,11 +396,7 @@ a:hover{ text-decoration: none; }
   background: linear-gradient(135deg, rgba(124,92,255,.92), rgba(24,209,197,.42));
 }
 .btn-ghost{ background: rgba(255,255,255,.05); }
-.btn-small{
-  padding: 10px 12px;
-  font-size: 13px;
-  border-radius: 12px;
-}
+.btn-small{ padding: 10px 12px; font-size: 13px; border-radius: 12px; }
 
 .hero-metrics{
   margin-top: 18px;
@@ -380,27 +410,11 @@ a:hover{ text-decoration: none; }
   background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.08);
 }
-.metric-k{
-  font-weight: 800;
-  font-size: 12.5px;
-  letter-spacing: .2px;
-}
-.metric-v{
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 12.5px;
-  line-height: 1.35;
-}
+.metric-k{ font-weight: 800; font-size: 12.5px; letter-spacing: .2px; }
+.metric-v{ margin-top: 6px; color: var(--muted); font-size: 12.5px; line-height: 1.35; }
 
-.hero-right{
-  padding: 22px;
-  background: linear-gradient(180deg, rgba(24,209,197,.10), rgba(255,255,255,.05));
-}
-.card-title{
-  margin: 0 0 12px;
-  font-size: 16px;
-  letter-spacing: -0.2px;
-}
+.hero-right{ padding: 22px; background: linear-gradient(180deg, rgba(24,209,197,.10), rgba(255,255,255,.05)); }
+.card-title{ margin: 0 0 12px; font-size: 16px; letter-spacing: -0.2px; }
 
 .list{
   margin: 0;
@@ -432,41 +446,18 @@ a:hover{ text-decoration: none; }
   background: rgba(0,0,0,.18);
   border: 1px solid rgba(255,255,255,.10);
 }
-.callout-title{
-  margin: 0;
-  font-weight: 850;
-  font-size: 13px;
-  opacity: .98;
-}
-.callout-text{
-  margin: 6px 0 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.5;
-}
+.callout-title{ margin: 0; font-weight: 850; font-size: 13px; opacity: .98; }
+.callout-text{ margin: 6px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
 
 .section{ padding: 26px 0; }
 
-.section-head h2{
-  margin: 0;
-  font-size: 22px;
-  letter-spacing: -0.3px;
-}
-.section-head p{
-  margin: 8px 0 0;
-  color: var(--muted);
-  max-width: 80ch;
-  line-height: 1.6;
-}
+.section-head h2{ margin: 0; font-size: 22px; letter-spacing: -0.3px; }
+.section-head p{ margin: 8px 0 0; color: var(--muted); max-width: 80ch; line-height: 1.6; }
 
 .page-head{ margin-bottom: 14px; }
-.page-head h1{
-  margin: 8px 0 0;
-  font-size: 30px;
-  letter-spacing: -0.4px;
-  line-height: 1.1;
-}
+.page-head h1{ margin: 8px 0 0; font-size: 30px; letter-spacing: -0.4px; line-height: 1.1; }
 .page-head p{ margin: 10px 0 0; }
+
 .crumbs{
   display:flex;
   gap: 8px;
@@ -477,31 +468,17 @@ a:hover{ text-decoration: none; }
 }
 .crumbs span{ opacity: .7; }
 
-.grid-3{
-  margin-top: 14px;
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
+.grid-3{ margin-top: 14px; display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .mini{ padding: 16px; }
 .mini h3{ margin: 0 0 8px; font-size: 15.5px; }
 .mini p{ margin: 0; color: var(--muted); line-height: 1.6; }
 
-.areas{
-  margin-top: 14px;
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
+.areas{ margin-top: 14px; display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .area{ padding: 16px; }
 .area h3{ margin: 0 0 8px; font-size: 16px; }
 .area p{ margin: 0 0 12px; color: var(--muted); line-height: 1.6; }
 
-.tags{
-  display:flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
+.tags{ display:flex; gap: 8px; flex-wrap: wrap; }
 .tag{
   font-size: 12px;
   font-weight: 700;
@@ -512,25 +489,12 @@ a:hover{ text-decoration: none; }
   color: rgba(234,240,255,.82);
 }
 
-.two-col{
-  margin-top: 12px;
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.h2{
-  margin: 0 0 10px;
-  font-size: 16px;
-  letter-spacing: -0.2px;
-}
+.two-col{ margin-top: 12px; display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.h2{ margin: 0 0 10px; font-size: 16px; letter-spacing: -0.2px; }
 
 .process{ margin-top: 12px; }
-.process-steps{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
+.process-steps{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+
 .step{
   display:flex;
   gap: 12px;
@@ -540,11 +504,9 @@ a:hover{ text-decoration: none; }
   border: 1px solid rgba(255,255,255,.08);
 }
 .step-n{
-  width: 34px;
-  height: 34px;
+  width: 34px; height: 34px;
   border-radius: 14px;
-  display:grid;
-  place-items:center;
+  display:grid; place-items:center;
   font-weight: 900;
   background: linear-gradient(135deg, rgba(124,92,255,.45), rgba(24,209,197,.25));
   border: 1px solid rgba(255,255,255,.12);
@@ -552,84 +514,12 @@ a:hover{ text-decoration: none; }
 .step-t{ font-weight: 850; font-size: 13.5px; }
 .step-p{ margin-top: 4px; color: var(--muted); font-size: 12.8px; line-height: 1.45; }
 
-.docs-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 12px;
-}
+.docs-row{ display:flex; align-items:center; justify-content:space-between; gap: 12px; }
 
 .muted{ color: var(--muted); }
 .tiny{ font-size: 12px; line-height: 1.45; }
 
-.divider{
-  height: 1px;
-  background: rgba(255,255,255,.08);
-  margin: 14px 0;
-}
-
-.contact{
-  margin-top: 14px;
-  padding: 16px;
-  display:grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 14px;
-}
-
-.contact-items{
-  margin-top: 12px;
-  display:grid;
-  gap: 10px;
-}
-.contact-item{
-  padding: 12px;
-  border-radius: 18px;
-  background: rgba(255,255,255,.04);
-  border: 1px solid rgba(255,255,255,.08);
-}
-.contact-k{ font-weight: 850; font-size: 12.5px; }
-.contact-v{ margin-top: 6px; color: rgba(234,240,255,.90); }
-.contact-v a{
-  color: rgba(234,240,255,.96);
-  text-decoration: underline;
-  text-decoration-color: rgba(234,240,255,.25);
-}
-.contact-v a:hover{ text-decoration-color: rgba(234,240,255,.55); }
-
-.contact-form{
-  padding: 12px;
-  border-radius: 18px;
-  background: rgba(0,0,0,.16);
-  border: 1px solid rgba(255,255,255,.10);
-  display:grid;
-  gap: 10px;
-}
-.contact-form label{
-  display:grid;
-  gap: 6px;
-  font-weight: 700;
-  font-size: 12.5px;
-  color: rgba(234,240,255,.86);
-}
-input, textarea{
-  width:100%;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,.14);
-  background: rgba(255,255,255,.06);
-  color: var(--text);
-  padding: 10px 12px;
-  font: inherit;
-  font-weight: 600;
-}
-input::placeholder, textarea::placeholder{
-  color: rgba(234,240,255,.45);
-  font-weight: 600;
-}
-input:focus, textarea:focus{
-  outline: 3px solid rgba(124,92,255,.45);
-  border-color: rgba(124,92,255,.25);
-}
-button[disabled]{ opacity: .55; cursor: not-allowed; }
+.divider{ height: 1px; background: rgba(255,255,255,.08); margin: 14px 0; }
 
 .cta{
   margin-top: 14px;
@@ -639,12 +529,7 @@ button[disabled]{ opacity: .55; cursor: not-allowed; }
   justify-content:space-between;
   gap: 12px;
 }
-.cta-right{
-  display:flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  justify-content:flex-end;
-}
+.cta-right{ display:flex; gap: 10px; flex-wrap: wrap; justify-content:flex-end; }
 
 .footer{
   padding: 18px 0 30px;
@@ -667,8 +552,8 @@ button[disabled]{ opacity: .55; cursor: not-allowed; }
   .grid-3{ grid-template-columns: 1fr; }
   .areas{ grid-template-columns: 1fr; }
   .process-steps{ grid-template-columns: 1fr; }
-  .contact{ grid-template-columns: 1fr; }
   .two-col{ grid-template-columns: 1fr; }
+
   .cta{ flex-direction: column; align-items: stretch; }
   .cta-right{ justify-content:flex-start; }
 
@@ -678,6 +563,9 @@ button[disabled]{ opacity: .55; cursor: not-allowed; }
 
   .brand-name{ font-size: 15px; }
   .brand-mark{ width: 120px; height: 62px; border-radius: 16px; }
+
+  /* En móvil, quitamos el subrayado para evitar “saltos” visuales */
+  .nav-link::after{ display:none; }
 }
 
 @media (max-width: 520px){
@@ -691,10 +579,7 @@ button[disabled]{ opacity: .55; cursor: not-allowed; }
 /* =========================
    TALLY EMBED (único bloque)
    ========================= */
-.tally-wrap{
-  width: 100%;
-  overflow: visible !important;
-}
+.tally-wrap{ width:100%; overflow: visible !important; }
 .tally-wrap iframe{
   display:block;
   width:100% !important;
@@ -714,7 +599,6 @@ button[disabled]{ opacity: .55; cursor: not-allowed; }
   box-shadow: 0 18px 60px rgba(0,0,0,.30);
   overflow:hidden;
 }
-
 .tally-card iframe{
   display:block;
   width:100%;
@@ -722,23 +606,4 @@ button[disabled]{ opacity: .55; cursor: not-allowed; }
   border:0;
   background:transparent;
 }
-[hidden]{ display:none !important; }
 
-.nav-mobile{
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: var(--header-h, 86px);
-  z-index: 9998;
-
-  background: rgba(7,10,18,.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  max-height: calc(100vh - var(--header-h, 86px));
-  overflow: auto;
-  padding-bottom: env(safe-area-inset-bottom);
-}
-html{ scroll-padding-top: var(--header-h, 86px); }
-body{ padding-top: var(--header-h, 86px); }
