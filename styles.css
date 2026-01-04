@@ -693,3 +693,36 @@ button[disabled]{
   object-fit: contain;
   display: block;
 }
+/* =========================
+   NAV: glow al pasar el ratón
+   ========================= */
+
+.nav-link{
+  position: relative;
+  transition: color .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .18s ease, text-shadow .18s ease;
+}
+
+/* Hover (ratón) */
+.nav-link:hover{
+  color: #ffffff;
+  background-color: rgba(255,255,255,.06);
+  border-color: rgba(255,255,255,.18);
+  text-shadow: 0 0 12px rgba(120, 180, 255, .55);
+  box-shadow: 0 0 0 1px rgba(120, 180, 255, .12), 0 10px 30px rgba(0,0,0,.35);
+}
+
+/* Activo + hover más marcado */
+.nav-link.is-active,
+.nav-link.is-active:hover{
+  color: #ffffff;
+  background-color: rgba(255,255,255,.08);
+  border-color: rgba(120, 180, 255, .22);
+  text-shadow: 0 0 14px rgba(120, 180, 255, .65);
+}
+
+/* Teclado (accesible) */
+.nav-link:focus-visible{
+  outline: 2px solid rgba(120, 180, 255, .9);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
