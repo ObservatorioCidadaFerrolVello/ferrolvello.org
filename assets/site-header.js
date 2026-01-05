@@ -1,5 +1,5 @@
 (() => {
-  // Evita doble inicialización (por cache, doble carga, etc.)
+  // Evita doble inicialización (cache, doble carga, etc.)
   if (window.__FV_HEADER_INIT__) return;
   window.__FV_HEADER_INIT__ = true;
 
@@ -32,7 +32,7 @@
           <img src="${logoSrc}" alt="Observatorio Cidadá Ferrol Vello" loading="eager" />
         </span>
 
-        <span class="brand-name">
+        <span class="brand-name" aria-label="Observatorio Cidadá Ferrol Vello">
           <span class="brand-line">Observatorio Cidadá</span>
           <span class="brand-line brand-line-sub">Ferrol Vello</span>
         </span>
@@ -72,7 +72,7 @@
   };
 
   const setHeaderHeightVar = () => {
-    // Altura real del header ya renderizado
+    // Altura real del header (para scroll-padding y max-height del panel)
     const h = host.offsetHeight || 88;
     document.documentElement.style.setProperty("--header-h", `${h}px`);
   };
@@ -84,11 +84,10 @@
     lockScroll(open);
   };
 
-  // Inicial
+  // Init
   setHeaderHeightVar();
   setOpen(false);
 
-  // Toggle
   btn.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -96,25 +95,20 @@
     setOpen(!isOpen);
   });
 
-  // Cierra al clicar un link
   panel.querySelectorAll("a").forEach(a => {
     a.addEventListener("click", () => setOpen(false));
   });
 
-  // Cierra al clicar fuera
   document.addEventListener("click", (e) => {
-    const isOpen = btn.getAttribute("aria-expanded") === "true";
-    if (!isOpen) return;
+    if (btn.getAttribute("aria-expanded") !== "true") return;
     if (host.contains(e.target)) return;
     setOpen(false);
   });
 
-  // Cierra con ESC
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") setOpen(false);
   });
 
-  // Recalcula altura y cierra en resize/orientación
   const onResize = () => {
     setHeaderHeightVar();
     setOpen(false);
@@ -122,7 +116,5 @@
 
   window.addEventListener("resize", onResize, { passive: true });
   window.addEventListener("orientationchange", onResize, { passive: true });
-
-  // Limpieza
   window.addEventListener("pagehide", () => setOpen(false));
 })();
