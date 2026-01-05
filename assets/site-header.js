@@ -1,5 +1,5 @@
 (() => {
-  // Evita doble inicialización (cache, doble carga, etc.)
+  // Evita doble inicialización (por cache, doble carga, etc.)
   if (window.__FV_HEADER_INIT__) return;
   window.__FV_HEADER_INIT__ = true;
 
@@ -32,7 +32,7 @@
           <img src="${logoSrc}" alt="Observatorio Cidadá Ferrol Vello" loading="eager" />
         </span>
 
-        <span class="brand-name" aria-label="Observatorio Cidadá Ferrol Vello">
+        <span class="brand-name">
           <span class="brand-line">Observatorio Cidadá</span>
           <span class="brand-line brand-line-sub">Ferrol Vello</span>
         </span>
@@ -72,8 +72,8 @@
   };
 
   const setHeaderHeightVar = () => {
-    const rect = host.getBoundingClientRect();
-    const h = Math.round(rect.height || 88);
+    // Altura real del header ya renderizado
+    const h = host.offsetHeight || 88;
     document.documentElement.style.setProperty("--header-h", `${h}px`);
   };
 
@@ -84,14 +84,11 @@
     lockScroll(open);
   };
 
-  // Inicial: mide DESPUÉS del render real (evita “saltitos” por fuente/estilos)
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => {
-      setHeaderHeightVar();
-      setOpen(false);
-    });
-  });
+  // Inicial
+  setHeaderHeightVar();
+  setOpen(false);
 
+  // Toggle
   btn.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -99,10 +96,12 @@
     setOpen(!isOpen);
   });
 
+  // Cierra al clicar un link
   panel.querySelectorAll("a").forEach(a => {
     a.addEventListener("click", () => setOpen(false));
   });
 
+  // Cierra al clicar fuera
   document.addEventListener("click", (e) => {
     const isOpen = btn.getAttribute("aria-expanded") === "true";
     if (!isOpen) return;
@@ -110,16 +109,20 @@
     setOpen(false);
   });
 
+  // Cierra con ESC
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") setOpen(false);
   });
 
+  // Recalcula altura y cierra en resize/orientación
   const onResize = () => {
-    setOpen(false);
     setHeaderHeightVar();
+    setOpen(false);
   };
 
   window.addEventListener("resize", onResize, { passive: true });
   window.addEventListener("orientationchange", onResize, { passive: true });
+
+  // Limpieza
   window.addEventListener("pagehide", () => setOpen(false));
 })();
