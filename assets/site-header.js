@@ -17,8 +17,7 @@
   // Normaliza pathname (sin query/hash) y convierte "/" en "/index.html"
   const normalizePath = (p) => {
     if (!p || p === "/") return "/index.html";
-    // Por si GitHub Pages entrega "/index.html" o "/"
-    return p.toLowerCase();
+    return String(p).toLowerCase();
   };
 
   const current = normalizePath(location.pathname);
@@ -33,7 +32,12 @@
         <span class="brand-mark" aria-hidden="true">
           <img src="${logoSrc}" alt="Observatorio Cidadá Ferrol Vello" loading="eager" />
         </span>
-        <span class="brand-name">Observatorio Cidadá Ferrol Vello</span>
+
+        <!-- Marca en 2 líneas para no empujar la navegación -->
+        <span class="brand-name">
+          <span class="brand-line">Observatorio Cidadá</span>
+          <span class="brand-line brand-line-sub">Ferrol Vello</span>
+        </span>
       </a>
 
       <nav class="nav" aria-label="Navegación principal">
@@ -70,7 +74,6 @@
   };
 
   const setHeaderHeightVar = () => {
-    // Calcula altura real del header ya renderizado
     const h = host.offsetHeight || 86;
     document.documentElement.style.setProperty("--header-h", `${h}px`);
   };
@@ -82,7 +85,7 @@
     lockScroll(open);
   };
 
-  // Inicial: set variables y cerrado
+  // Inicial
   setHeaderHeightVar();
   setOpen(false);
 
@@ -121,6 +124,6 @@
   window.addEventListener("resize", onResize, { passive: true });
   window.addEventListener("orientationchange", onResize, { passive: true });
 
-  // Asegura limpieza si navegas/ocultas
+  // Limpieza
   window.addEventListener("pagehide", () => setOpen(false));
 })();
