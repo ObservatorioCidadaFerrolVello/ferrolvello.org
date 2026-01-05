@@ -22,7 +22,7 @@
 
   --max: 1120px;
 
-  /* Se actualiza por JS con la altura real del header */
+  /* JS lo actualiza con la altura real del header */
   --header-h: 88px;
 }
 
@@ -47,6 +47,9 @@ body{
     radial-gradient(900px 480px at 82% 22%, rgba(24,209,197,.18), transparent 60%),
     radial-gradient(900px 520px at 40% 92%, rgba(124,92,255,.12), transparent 55%),
     linear-gradient(180deg, var(--bg0), var(--bg1) 40%, #0a0e18);
+
+  /* ✅ CLAVE: como el header es FIXED, empujamos el contenido */
+  padding-top: var(--header-h);
 }
 
 a{ color: inherit; text-decoration: none; }
@@ -70,18 +73,24 @@ a:hover{ text-decoration: none; }
 .skip-link:focus{ left:12px; }
 
 /* =========================
-   HEADER (FIJO) + NAV
+   HEADER (FIJO DEFINITIVO) + NAV
    ========================= */
 
 .site-header{
-  position: sticky; /* ✅ fijo real */
+  position: fixed;           /* ✅ definitivo: no “se mueve” nunca */
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 9999;
 
   background: rgba(7,10,18,.60);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,.06);
+
+  /* anti-jitter Safari */
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
 /* Inyectas: <div class="container header-inner"> */
@@ -98,9 +107,8 @@ a:hover{ text-decoration: none; }
   display:flex;
   align-items:center;
   gap: 12px;
-
-  min-width: 0;         /* ✅ permite que el nav tenga espacio */
-  flex: 0 0 auto;       /* marca estable (no empuja raro) */
+  min-width: 0;
+  flex: 0 0 auto;
 }
 
 /* Placa del logo */
@@ -126,7 +134,7 @@ a:hover{ text-decoration: none; }
   filter: drop-shadow(0 10px 20px rgba(0,0,0,.55));
 }
 
-/* Marca en 2 líneas (como pediste) */
+/* Marca en 2 líneas */
 .brand-name{
   display:flex;
   flex-direction: column;
@@ -150,14 +158,12 @@ a:hover{ text-decoration: none; }
   gap: 10px;
 
   justify-content:flex-end;
-  flex-wrap: nowrap;      /* ✅ NO bajar “Contacto” */
+  flex-wrap: nowrap;
   white-space: nowrap;
 
   min-width: 0;
-  overflow: auto;         /* ✅ si no cabe, scroll horizontal (mejor que salto) */
-  scrollbar-width: none;  /* Firefox */
+  overflow: visible;   /* ✅ en desktop NO scroll (evita “micro-movimientos”) */
 }
-.nav::-webkit-scrollbar{ display:none; } /* Chrome/Safari */
 
 .nav-link{
   position: relative;
@@ -229,12 +235,12 @@ a:hover{ text-decoration: none; }
   border-radius: 2px;
 }
 
-/* Menú móvil: cuelga justo debajo del header (ABSOLUTE dentro del sticky) */
+/* Menú móvil: cuelga debajo del header fijo */
 .nav-mobile{
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
-  top: 100%;
+  top: var(--header-h);
   z-index: 9998;
 
   border-top: 1px solid rgba(255,255,255,.06);
