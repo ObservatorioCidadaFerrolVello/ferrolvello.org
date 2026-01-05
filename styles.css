@@ -22,17 +22,20 @@
 
   --max: 1120px;
 
-  /* JS la recalcula a la altura real del header */
+  /* Se actualiza por JS con la altura real del header */
   --header-h: 88px;
 }
 
 *{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; scroll-padding-top: var(--header-h); }
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top: var(--header-h);
+}
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior:auto; }
 }
 
-/* Crítico: que [hidden] funcione SIEMPRE (menú móvil) */
+/* Crítico para menú móvil */
 [hidden]{ display:none !important; }
 
 body{
@@ -67,11 +70,11 @@ a:hover{ text-decoration: none; }
 .skip-link:focus{ left:12px; }
 
 /* =========================
-   HEADER (UNIFICADO) + NAV  (FIX DEFINITIVO)
+   HEADER (FIJO) + NAV
    ========================= */
 
 .site-header{
-  position: sticky;
+  position: sticky; /* ✅ fijo real */
   top: 0;
   z-index: 9999;
 
@@ -79,22 +82,15 @@ a:hover{ text-decoration: none; }
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255,255,255,.06);
-
-  /* CLAVE: ancla .nav-mobile justo debajo */
-  position: relative;
 }
 
 /* Inyectas: <div class="container header-inner"> */
 .header-inner{
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  column-gap: 14px;
-
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 14px;
   padding: 14px 0;
-
-  /* Altura estable => NO “baile” al cambiar pestaña activa */
-  min-height: 88px;
 }
 
 /* Marca */
@@ -102,8 +98,9 @@ a:hover{ text-decoration: none; }
   display:flex;
   align-items:center;
   gap: 12px;
-  min-width: 0;
-  flex: 0 0 auto;
+
+  min-width: 0;         /* ✅ permite que el nav tenga espacio */
+  flex: 0 0 auto;       /* marca estable (no empuja raro) */
 }
 
 /* Placa del logo */
@@ -129,50 +126,51 @@ a:hover{ text-decoration: none; }
   filter: drop-shadow(0 10px 20px rgba(0,0,0,.55));
 }
 
-/* Marca en 2 líneas */
+/* Marca en 2 líneas (como pediste) */
 .brand-name{
   display:flex;
   flex-direction: column;
   gap: 2px;
   line-height: 1.05;
-  white-space: nowrap;
 
   font-weight: 850;
   letter-spacing: .1px;
+  font-size: 16px;
   opacity: .96;
+
+  white-space: nowrap;
 }
-.brand-line{ display:block; font-size: 15px; }
-.brand-line-sub{ display:block; font-size: 14px; font-weight: 850; opacity: .88; }
+.brand-line{ display:block; }
+.brand-line-sub{ opacity:.92; }
 
 /* Nav desktop */
 .nav{
-  justify-self: end;
   display:flex;
-  gap: 10px;
   align-items:center;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-}
+  gap: 10px;
 
-/* Links estables (altura fija => sin reflow) */
+  justify-content:flex-end;
+  flex-wrap: nowrap;      /* ✅ NO bajar “Contacto” */
+  white-space: nowrap;
+
+  min-width: 0;
+  overflow: auto;         /* ✅ si no cabe, scroll horizontal (mejor que salto) */
+  scrollbar-width: none;  /* Firefox */
+}
+.nav::-webkit-scrollbar{ display:none; } /* Chrome/Safari */
+
 .nav-link{
   position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  height: 40px;
-  line-height: 1;
-  padding: 0 12px;
-
   font-weight: 750;
   font-size: 13.5px;
   opacity: .84;
-
+  padding: 10px 12px;
   border-radius: 14px;
   border: 1px solid transparent;
   transition: color .18s ease, background-color .18s ease, border-color .18s ease, opacity .18s ease;
+  flex: 0 0 auto;
 }
+
 .nav-link:hover{
   opacity: 1;
   color: #fff;
@@ -180,7 +178,7 @@ a:hover{ text-decoration: none; }
   border-color: rgba(255,255,255,.16);
 }
 
-/* subrayado sin afectar layout */
+/* subrayado elegante */
 .nav-link::after{
   content: "";
   position: absolute;
@@ -221,7 +219,6 @@ a:hover{ text-decoration: none; }
   cursor:pointer;
   position: relative;
   z-index: 10000;
-  justify-self: end;
 }
 .nav-toggle span{
   display:block;
@@ -232,7 +229,7 @@ a:hover{ text-decoration: none; }
   border-radius: 2px;
 }
 
-/* Menú móvil: cuelga justo debajo del header */
+/* Menú móvil: cuelga justo debajo del header (ABSOLUTE dentro del sticky) */
 .nav-mobile{
   position: absolute;
   left: 0;
@@ -246,15 +243,17 @@ a:hover{ text-decoration: none; }
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 
-  max-height: calc(100vh - var(--header-h, 88px));
+  max-height: calc(100vh - var(--header-h));
   overflow: auto;
   padding-bottom: env(safe-area-inset-bottom);
 }
+
 .nav-mobile-inner{
   display:grid;
   gap: 8px;
   padding: 14px 0 18px;
 }
+
 .nav-mobile a{
   display:block;
   padding: 12px 14px;
@@ -262,7 +261,7 @@ a:hover{ text-decoration: none; }
   border-radius: 14px;
   background: rgba(255,255,255,.06);
   border: 1px solid rgba(255,255,255,.08);
-  font-weight: 750;
+  font-weight: 800;
   opacity: .92;
 }
 .nav-mobile a:hover{
@@ -285,6 +284,7 @@ a:hover{ text-decoration: none; }
 .spacer-10{ height: 10px; }
 
 .hero{ padding: 26px 0 10px; }
+
 .hero-grid{
   display:grid;
   grid-template-columns: 1.3fr .9fr;
@@ -360,7 +360,7 @@ a:hover{ text-decoration: none; }
   border: 1px solid rgba(255,255,255,.14);
   background: rgba(255,255,255,.06);
   color: rgba(234,240,255,.92);
-  font-weight: 750;
+  font-weight: 800;
   font-size: 13.5px;
   box-shadow: 0 10px 22px rgba(0,0,0,.35);
 }
@@ -381,11 +381,7 @@ a:hover{ text-decoration: none; }
   background: linear-gradient(135deg, rgba(124,92,255,.92), rgba(24,209,197,.42));
 }
 .btn-ghost{ background: rgba(255,255,255,.05); }
-.btn-small{
-  padding: 10px 12px;
-  font-size: 13px;
-  border-radius: 12px;
-}
+.btn-small{ padding: 10px 12px; font-size: 13px; border-radius: 12px; }
 
 .hero-metrics{
   margin-top: 18px;
@@ -399,17 +395,8 @@ a:hover{ text-decoration: none; }
   background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.08);
 }
-.metric-k{
-  font-weight: 800;
-  font-size: 12.5px;
-  letter-spacing: .2px;
-}
-.metric-v{
-  margin-top: 6px;
-  color: var(--muted);
-  font-size: 12.5px;
-  line-height: 1.35;
-}
+.metric-k{ font-weight: 900; font-size: 12.5px; letter-spacing: .2px; }
+.metric-v{ margin-top: 6px; color: var(--muted); font-size: 12.5px; line-height: 1.35; }
 
 .hero-right{
   padding: 22px;
@@ -451,18 +438,8 @@ a:hover{ text-decoration: none; }
   background: rgba(0,0,0,.18);
   border: 1px solid rgba(255,255,255,.10);
 }
-.callout-title{
-  margin: 0;
-  font-weight: 850;
-  font-size: 13px;
-  opacity: .98;
-}
-.callout-text{
-  margin: 6px 0 0;
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.5;
-}
+.callout-title{ margin: 0; font-weight: 900; font-size: 13px; opacity: .98; }
+.callout-text{ margin: 6px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
 
 .section{ padding: 26px 0; }
 
@@ -491,7 +468,7 @@ a:hover{ text-decoration: none; }
   display:flex;
   gap: 8px;
   align-items:center;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 12.5px;
   color: rgba(234,240,255,.78);
 }
@@ -524,7 +501,7 @@ a:hover{ text-decoration: none; }
 }
 .tag{
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
   padding: 6px 10px;
   border-radius: 999px;
   background: rgba(255,255,255,.06);
@@ -569,7 +546,7 @@ a:hover{ text-decoration: none; }
   background: linear-gradient(135deg, rgba(124,92,255,.45), rgba(24,209,197,.25));
   border: 1px solid rgba(255,255,255,.12);
 }
-.step-t{ font-weight: 850; font-size: 13.5px; }
+.step-t{ font-weight: 900; font-size: 13.5px; }
 .step-p{ margin-top: 4px; color: var(--muted); font-size: 12.8px; line-height: 1.45; }
 
 .docs-row{
@@ -634,19 +611,16 @@ a:hover{ text-decoration: none; }
   .nav-toggle{ display:inline-block; }
 
   .brand-mark{ width: 120px; height: 62px; border-radius: 16px; }
-  .brand-line{ font-size: 14px; }
-  .brand-line-sub{ font-size: 13px; }
+  .brand-name{ font-size: 15px; }
 
   .nav-link::after{ display:none; }
-  .header-inner{ min-height: 84px; }
 }
 
 @media (max-width: 520px){
+  .container{ width: min(var(--max), calc(100% - 28px)); }
   .brand-mark{ width: 104px; height: 56px; border-radius: 14px; }
   .brand-mark img{ transform: scale(1.08); }
-  .brand-line{ font-size: 13.5px; }
-  .brand-line-sub{ font-size: 12.5px; }
-
+  .brand-name{ font-size: 14px; }
   .hero-left{ padding: 18px; }
   .hero-right{ padding: 16px; }
 }
@@ -681,4 +655,3 @@ a:hover{ text-decoration: none; }
   border:0;
   background:transparent;
 }
-
