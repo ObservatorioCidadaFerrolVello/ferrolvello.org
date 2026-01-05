@@ -1,5 +1,5 @@
 (() => {
-  // Evita doble inicialización (cache, doble carga, etc.)
+  // Evita doble inicialización
   if (window.__FV_HEADER_INIT__) return;
   window.__FV_HEADER_INIT__ = true;
 
@@ -32,7 +32,7 @@
           <img src="${logoSrc}" alt="Observatorio Cidadá Ferrol Vello" loading="eager" />
         </span>
 
-        <span class="brand-name" aria-label="Observatorio Cidadá Ferrol Vello">
+        <span class="brand-name">
           <span class="brand-line">Observatorio Cidadá</span>
           <span class="brand-line brand-line-sub">Ferrol Vello</span>
         </span>
@@ -65,56 +65,65 @@
 
   const btn = host.querySelector(".nav-toggle");
   const panel = host.querySelector("#nav-mobile");
-  if (!btn || !panel) return;
 
   const lockScroll = (lock) => {
     document.documentElement.style.overflow = lock ? "hidden" : "";
   };
 
   const setHeaderHeightVar = () => {
-    // Altura real del header (para scroll-padding y max-height del panel)
+    // Altura real ya renderizada (header fijo)
     const h = host.offsetHeight || 88;
     document.documentElement.style.setProperty("--header-h", `${h}px`);
   };
 
   const setOpen = (open) => {
+    if (!btn || !panel) return;
     btn.setAttribute("aria-expanded", String(open));
     btn.setAttribute("aria-label", open ? "Pechar menú" : "Abrir menú");
     panel.hidden = !open;
     lockScroll(open);
   };
 
-  // Init
+  // 1) Calcula altura al cargar
   setHeaderHeightVar();
-  setOpen(false);
 
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    const isOpen = btn.getAttribute("aria-expanded") === "true";
-    setOpen(!isOpen);
-  });
+  // 2) Recalcula cuando fuentes/estilos terminen de ajustar medidas
+  window.addEventListener("load", setHeaderHeightVar, { passive: true });
 
-  panel.querySelectorAll("a").forEach(a => {
-    a.addEventListener("click", () => setOpen(false));
-  });
-
-  document.addEventListener("click", (e) => {
-    if (btn.getAttribute("aria-expanded") !== "true") return;
-    if (host.contains(e.target)) return;
-    setOpen(false);
-  });
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") setOpen(false);
-  });
-
+  // 3) Recalcula si cambia tamaño
   const onResize = () => {
     setHeaderHeightVar();
     setOpen(false);
   };
-
   window.addEventListener("resize", onResize, { passive: true });
   window.addEventListener("orientationchange", onResize, { passive: true });
-  window.addEventListener("pagehide", () => setOpen(false));
+
+  // Menú móvil
+  if (btn && panel) {
+    setOpen(false);
+
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+      setOpen(!isOpen);
+    });
+
+    panel.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => setOpen(false));
+    });
+
+    document.addEventListener("click", (e) => {
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+      if (!isOpen) return;
+      if (host.contains(e.target)) return;
+      setOpen(false);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") setOpen(false);
+    });
+
+    window.addEventListener("pagehide", () => setOpen(false));
+  }
 })();
